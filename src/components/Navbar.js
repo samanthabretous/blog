@@ -8,7 +8,7 @@ const Navbar = class extends React.Component {
   constructor(props) {
     super();
     this.state = {
-      logoWidth: 150
+      logoWidth: 120
     };
   }
 
@@ -22,7 +22,7 @@ const Navbar = class extends React.Component {
       ) {
         width = 80;
       } else {
-        width = 150;
+        width = 120;
       }
       this.setState({logoWidth: width});
     };
@@ -87,7 +87,7 @@ const Navbar = class extends React.Component {
             className={stylesheet.logoWrapper}
             title="Samantha Bretous Logo"
             style={{
-              height: logoWidth === 150 ? 150 : 60,
+              height: logoWidth === 120 ? 120 : 60,
               transition: `height 500ms ease`
             }}
           >

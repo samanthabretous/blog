@@ -68,7 +68,7 @@
     font-weight: 500;
     align-self: flex-start;
     letter-spacing: .08334rem;
-    background-image: @lightblue;
+    background-image: linear-gradient(180deg,@lightblue,@lightblue);
     background-repeat: no-repeat;
     background-position: 8px bottom;
     background-size: 100% 6px;
@@ -110,11 +110,10 @@
     background-color: transparent;
     color: inherit;
     text-decoration: none;
-    background-image: none;
     @media screen and (max-width: 800px) {
         display: flex;
-    flex-direction: row;
-    width: 100%;
+        flex-direction: row;
+        width: 100%;
     }
 }
 
