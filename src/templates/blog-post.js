@@ -28,12 +28,12 @@ export class BlogPostTemplate extends Component {
         {helmet || ""}
         <div className={stylesheet.articleHero}>
           <div className={stylesheet.heroWrapper}>
-            <PreviewCompatibleImage
+            {/* <PreviewCompatibleImage
               imageInfo={{
                 image: featuredImage,
                 alt: `featured image thumbnail for post ${title}`
               }}
-            />
+            /> */}
           </div>
           <div className={stylesheet.articleWrapper}>
             <span className={stylesheet.graySquare} />
@@ -101,17 +101,17 @@ const BlogPost = ({data}) => {
               content={`${post.frontmatter.description}`}
             />
             <meta property="og:title" content={post.frontmatter.title} />
-            <meta
+            {/* <meta
               property="og:image"
               content={
                 post.frontmatter.featuredImage.childImageSharp.fluid.originalImg
               }
-            />
+            /> */}
           </Helmet>
         }
         tags={post.frontmatter.tags}
         title={post.frontmatter.title}
-        featuredImage={post.frontmatter.featuredImage}
+        // featuredImage={post.frontmatter.featuredImage}
         readingTime={post.fields.readingTime.text}
       />
       <Footer />
