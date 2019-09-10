@@ -2,8 +2,8 @@
 templateKey: blog-post
 title: Adding Additional Widgets to Netlify CMS
 date: 2019-09-01T10:34:22.668Z
-featuredImage: /img/flavor_wheel.jpg
-thumbnail: /img/products-grid3.jpg
+featuredImage: /img/Coding_a_component_kit_thumbnail_samantha_bretous@2x.png
+thumbnail: /img/Coding_a_component_kit_thumbnail_samantha_bretous@2x.png
 isFeaturedPost: false
 draft: true
 description: How to add a custom widget to netlify cms
