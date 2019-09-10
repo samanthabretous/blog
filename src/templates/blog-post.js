@@ -23,17 +23,18 @@ export class BlogPostTemplate extends Component {
       helmet
     } = this.props;
     const PostContent = contentComponent || Content;
+    console.log(featuredImage);
     return (
       <section className={stylesheet.section}>
         {helmet || ""}
         <div className={stylesheet.articleHero}>
           <div className={stylesheet.heroWrapper}>
-            {/* <PreviewCompatibleImage
+            <PreviewCompatibleImage
               imageInfo={{
                 image: featuredImage,
                 alt: `featured image thumbnail for post ${title}`
               }}
-            /> */}
+            />
           </div>
           <div className={stylesheet.articleWrapper}>
             <span className={stylesheet.graySquare} />
@@ -86,6 +87,7 @@ BlogPostTemplate.propTypes = {
 
 const BlogPost = ({data}) => {
   const {markdownRemark: post} = data;
+  console.log(post);
   return (
     <Layout>
       <Navbar showProgressBar />
@@ -101,17 +103,17 @@ const BlogPost = ({data}) => {
               content={`${post.frontmatter.description}`}
             />
             <meta property="og:title" content={post.frontmatter.title} />
-            {/* <meta
+            <meta
               property="og:image"
               content={
                 post.frontmatter.featuredImage.childImageSharp.fluid.originalImg
               }
-            /> */}
+            />
           </Helmet>
         }
         tags={post.frontmatter.tags}
         title={post.frontmatter.title}
-        // featuredImage={post.frontmatter.featuredImage}
+        featuredImage={post.frontmatter.featuredImage}
         readingTime={post.fields.readingTime.text}
       />
       <Footer />
@@ -142,6 +144,13 @@ export const pageQuery = graphql`
         title
         description
         tags
+        featuredImage {
+          childImageSharp {
+            fluid(maxWidth: 630, quality: 100) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
     }
   }

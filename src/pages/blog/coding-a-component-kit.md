@@ -2,7 +2,7 @@
 templateKey: blog-post
 title: Coding a Component Kit
 date: 2019-09-01T10:34:22.668Z
-featuredImage: /img/Coding_a_component_kit_hero_samantha_bretous@2x.png
+featuredImage: /img/Coding_a_component_kit_thumbnail_samantha_bretous@2x.png
 thumbnail: /img/Coding_a_component_kit_thumbnail_samantha_bretous@2x.png
 isFeaturedPost: false
 draft: false
@@ -72,7 +72,7 @@ And it can be really hard to override those styles that are embedded. But allowi
 
 **Over exposing:** When we first began building our green field app at my previous job, the app decided which state to render. The app would be able to Use `CardWithData` and `CardWithNoData`. It became a little unnecessary. So we put the weight of which state to render on the component instead since it created a lot less boilerplate code. So the code you see in the image would live within the component. and based on the properties you pass to it determines what state to render.
 
-!["third party library"](/img/component_kit-third_party_library.png"Third Party Library")
+!["third party library"](/img/component_kit-third_party_library.png "Third Party Library")
 
 **Third party libraries:** Treat it like a Third Party Library as if you were going to OSS it. Generally when something is open source it is.
 

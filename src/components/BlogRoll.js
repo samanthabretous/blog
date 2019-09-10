@@ -1,38 +1,35 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {Link, graphql, StaticQuery} from "gatsby";
-// import PreviewCompatibleImage from "./PreviewCompatibleImage";
+import PreviewCompatibleImage from "./PreviewCompatibleImage";
 import stylesheet from "./BlogRoll.module.less";
 
 class BlogRoll extends React.Component {
   render() {
     const {data} = this.props;
     const {edges: posts} = data.allMarkdownRemark;
-    // const featured = posts.find(post => post.node.frontmatter.isFeaturedPost)
-    // .node;
+    const featured = posts.find(post => post.node.frontmatter.isFeaturedPost)
+      .node;
     return (
       <div>
         <div className={stylesheet.cardFeaturedBackground}>
-          <Link
-            className={stylesheet.cardFeatured}
-            // to={featured.fields.slug}
-          >
-            {/* <div className={stylesheet.cardImage}>
+          <Link className={stylesheet.cardFeatured} to={featured.fields.slug}>
+            <div className={stylesheet.cardImage}>
               <PreviewCompatibleImage
                 imageInfo={{
                   image: featured.frontmatter.featuredImage,
                   alt: `featured image thumbnail for post ${featured.frontmatter.title}`
                 }}
               />
-            </div> */}
+            </div>
             <div className={stylesheet.cardInfo}>
               <h5 className={stylesheet.cardCategory}>
-                {/* {featured.frontmatter.tags[0]} */}
+                {featured.frontmatter.tags[0]}
               </h5>
               <h1 className={stylesheet.cardTitle}>
-                {/* {featured.frontmatter.title} */}
+                {featured.frontmatter.title}
               </h1>
-              {/* <p className={stylesheet.cardExcerpt}>{featured.excerpt}</p> */}
+              <p className={stylesheet.cardExcerpt}>{featured.excerpt}</p>
               <p className={stylesheet.readMore}>Read More </p>
             </div>
           </Link>
@@ -55,14 +52,14 @@ class BlogRoll extends React.Component {
                       key={post.id}
                       to={post.fields.slug}
                     >
-                      {/* <div className={stylesheet.featuredThumbnail}>
+                      <div className={stylesheet.featuredThumbnail}>
                         <PreviewCompatibleImage
                           imageInfo={{
                             image: post.frontmatter.thumbnail,
                             alt: `featured image thumbnail for post ${post.title}`
                           }}
                         />
-                      </div> */}
+                      </div>
                       <div className={stylesheet.postInformation}>
                         <span className={stylesheet.postCategory}>
                           {post.frontmatter.tags[0]}
@@ -111,6 +108,20 @@ export default () => (
                 templateKey
                 date(formatString: "MMMM DD, YYYY")
                 tags
+                featuredImage {
+                  childImageSharp {
+                    fluid(maxWidth: 400, quality: 100) {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
+                thumbnail {
+                  childImageSharp {
+                    fluid(maxWidth: 200, quality: 100) {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
               }
             }
           }

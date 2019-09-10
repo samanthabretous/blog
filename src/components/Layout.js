@@ -1,6 +1,5 @@
 import React from "react";
 import {Helmet} from "react-helmet";
-import "./all.sass";
 import useSiteMetadata from "./SiteMetadata";
 import {withPrefix} from "gatsby";
 
