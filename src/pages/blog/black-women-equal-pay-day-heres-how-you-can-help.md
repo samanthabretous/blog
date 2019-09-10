@@ -20,5 +20,5 @@ Thursday, August 22 2019, was Black Women Equal Pay Day! A day that is near and 
 6. **Bring attention to the pay gap.** Talk to your friends, family, coworkers, and network about it. Help increase education and awareness about economic discrimination. Have a conversation about salary amongst your coworkers. In New York State there are laws that employers may not prohibit employees from “inquiring about, discussing, or disclosing” the wages of that employee or another employee. Please check your state laws and start the conversation.
 
 Always remember, just because your company has a diversity and inclusion initiative, doesn't mean everything is roses. In order for change to happen, it takes your help. If you are interested in knowing how you can be more involved more feel free to reach out and/or remove my diversity debt by read these two articles:
-- (Black Women Underpaid Stress)[https://www.oprahmag.com/life/work-money/a28569015/black-women-underpaid-stress/]
-- (White People are broken)[https://medium.com/@katstory/white-people-are-broken-ab0fe873e5d3]
+- [Black Women Underpaid Stress](https://www.oprahmag.com/life/work-money/a28569015/black-women-underpaid-stress/)
+- [White People are broken](https://medium.com/@katstory/white-people-are-broken-ab0fe873e5d3)
