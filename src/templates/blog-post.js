@@ -9,14 +9,15 @@ import Content, {HTMLContent} from "../components/Content";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import stylesheet from "./blog-post.module.less";
-import "prismjs/themes/prism-tomorrow.css";
+import "prismjs";
+import "prismjs/themes/prism-okaidia.css";
 
 export class BlogPostTemplate extends Component {
   render() {
     const {
       content,
       contentComponent,
-      // tags,
+      tags,
       title,
       featuredImage,
       readingTime,
@@ -38,7 +39,7 @@ export class BlogPostTemplate extends Component {
           </div>
           <div className={stylesheet.articleWrapper}>
             <span className={stylesheet.graySquare} />
-            <h5 className={stylesheet.articleCategory}>CAREER</h5>
+            <h5 className={stylesheet.articleCategory}>{tags[0]}</h5>
             <h1 className={stylesheet.articleTitle}>{title}</h1>
             <h5 className={stylesheet.articleTime}>{readingTime}</h5>
           </div>

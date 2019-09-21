@@ -16,28 +16,28 @@ The idea of creating a shared library of components for all engineers to use is 
 
 !["why are we talking about components"](/img/why_are_we_talking_about_components.png "Why are we talking about components")
 
-###1. Technology is changing we should too
+###1. [Technology is changing we should too](#technology-is-changing-we-should-too)
 
 We have a bunch of new technologies that weren’t available before. For example, React, which was designed to be the reusable Lego blocks of your UI that presented data that changed over time. As developers we no longer need to copy and paste the same code on multiple pages. We have the ability to create abstractions and make our code more scalable.
 
-###2. Work less and write less code
+###2. [Work less and write less code](#work-less-and-write-less-code)
 
 Wouldn’t it be nice to work less and write less code as an individual contributor. Well with components that’s an option. With a component base system in place, a developer's focus gets place on pulling and interpolating data not that other thing called CSS. We are able to "stack" components right next to each other, plug in data, and we are done. Everything a developer might have enjoyed when they were playing with legos as a child except the stepping on legos part, of course.
 
-###3. Manage Projects More Efficiently
+###3. [Manage Projects More Efficiently])(#manage-projects-more-efficiently)
 Since there isn't a need to copying and pasting anymore, our code base gets reduce. Which in return the actual files with get smaller, and we can create faster UI experiences. When updates need to happen on the component level it will happen across app and projects. And if you didn't make duplicate components you will just have to update in one place. Isn't that unbelievable?
 
-###4. Isolate Bugs
+###4. [Isolate Bugs](#isolate-bugs)
 You know what else is unbelievable...when bugs can be isolated. No more guessing if a component is causing a breakage, because there are mechanisms in place. A component is going to be well tested and we will talk about that later. Developers can eliminate the component being the problem.
 
-###5. Constant UX across multiple platform
+###5. [Constant UX across multiple platform](#constant-ux-across-multiple-platform)
 The most crucial reason to have components is that it sets a foundation to create a consistent UX across all apps and projects. Now there are a lot of awesome pre-packaged component libraries like Material UI and Semantic. So why don't companies use them… well that simple it's for branding. And when one deals with branding there become an additional layer of workflow.
 
 >"Software is often built by incredibly large teams of people. The challenge to create coherent experiences multiplies exponentially as more people are added to the mix. Over time, no matter how consistent or small a team is, different people will contribute new solutions and styles, causing experiences to diverge." - The lead designer from Airbnb Karri Saarinen
 
 The more inconsistent the user experience, the slower product development becomes and vice versa.
 
-Fundamental Pieces of a Component
+###[Fundamental Pieces of a Component](#fundamental-pieces-of-a-component)
 So now you know why components are extremely impressive. Now let's figure out what makes a component.
 
 - Reusable: that means they can be extended. Allowing you to easily create new components from existing ones.

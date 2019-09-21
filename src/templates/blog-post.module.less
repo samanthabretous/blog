@@ -61,6 +61,8 @@
 .articleCategory {
     color: @lightblue;
     margin-bottom: 0;
+    text-transform: uppercase;
+    letter-spacing: 3px;
     @media screen and (max-width: 875px) {
         font-size: 1rem;
         font-weight: 500;
@@ -123,9 +125,15 @@
     padding-left: 3px;
 }
 
+.copy h3 a {
+    color: @black;
+    font-size: @font-size--h3;
+    background-image: none;
+}
+
 .copy p span {
     max-width: 600px!important;
-    margin-bottom: 2rem;
+    margin: 2rem 0;
 }
 
 .copy a {
@@ -135,5 +143,13 @@
     background-position: 8px bottom;
     background-size: 100% 6px;
     color: @purple;
+}
+
+.copy hr {
+    margin: 2rem 0;
+}
+
+.copy code[class*="language-text"] {
+    font-size: 1.1rem;
 }
 
