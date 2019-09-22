@@ -15,7 +15,7 @@ tags:
 
 Great another tutorial on heap maps. Good news is there can never be enough tutorials on heap maps because they can be trick to understand. First thing to know is a heap map is a set of values stored in a specific order that allows efficient access or modification. Heap maps are usually represented in a tree structure and there is only two sorting directions the tree values can be stored. Heap map can be either be ascending (smallest number is at the top) called a **min heap** or descending(where the largest number is at the top) known as a **max heap**.
 
-!["Binary Min Max Heap Map Comparison"](/img/min-max-heap-diagram.png "Binary Min Max Heap Map Comparison")
+!["Binary Min Max Heap Map Comparison"](/img/heap-maps-101/min-max-heap-diagram.png "Binary Min Max Heap Map Comparison")
 
 ### Why use a heap map
 We have to first look at the problem we are trying to solve. If you want to find the smallest or the largest element quickly then heap map is the answer. This is because we are always sorting the heap when elements are entering or leaving. One of the biggest benefits is not having to look at every element when sorting elements. In tree structure, after looking at the first row of children and determining which branch to follow we are eliminating having to look at least half of the tree. In small heap maps the benefits may not be apparent but with larger heap map it is plenty. 
@@ -41,7 +41,7 @@ The reason why binary heap maps are so common is because instead of worrying abo
 ### [Are Priority Queues and Heap Maps the same](#priority-queue-verses-heap-map)
 Short answer. Yes. Priority queues are an idea verses an implementation. Long answer. Ummmmmm, sure! Priority queues can have any underlying data structure like an array, link list, hash map, binary tree, or a heap map. As long as you can get the highest priority element, it is an priority queue. And depending which operation (peek, add, remove) needs to be the most efficient is best way to chose the data structure to use.  
 
-!["Data Structure Runtime Representations"](/img/lmu-data-structure-references.png "Data Structure Runtime Representations")
+!["Data Structure Runtime Representations"](/img/heap-maps-101/lmu-data-structure-references.png "Data Structure Runtime Representations")
 
 Source [CS LMU edu](https://cs.lmu.edu/~ray/notes/pqueues/)
 
@@ -61,12 +61,12 @@ This can be done on logarithmic time **Θ(log n)**
 
 Let's begin 
 
-!["Min Heap Add Step 1"](/img/min-heap-add-1-wide.png "Min Heap Add Step 1")
+!["Min Heap Add Step 1"](/img/heap-maps-101/min-heap-add-1-wide.png "Min Heap Add Step 1")
 
 *** 
 
 We first start with adding the new element to the back of the array. 
-!["Min Heap Add Step 2"](/img/min-heap-add-2-wide.png "Min Heap Add Step 2")
+!["Min Heap Add Step 2"](/img/heap-maps-101/min-heap-add-2-wide.png "Min Heap Add Step 2")
 ```javascript
 this.heap.push(element);
 ```
@@ -74,12 +74,12 @@ this.heap.push(element);
 ***
 
 We then need to compare this new element to its parent to see if it smaller or larger. In this case 2 is smaller then 7. We can swap the two elements.
-!["Min Heap Add Step 3"](/img/min-heap-add-3-wide.png "Min Heap Add Step 3")
+!["Min Heap Add Step 3"](/img/heap-maps-101/min-heap-add-3-wide.png "Min Heap Add Step 3")
 ```javascript
 if (parent <= element) { break; } // false
 ```
 
-!["Min Heap Add Step 4"](/img/min-heap-add-4-wide.png "Min Heap Add Step 4")
+!["Min Heap Add Step 4"](/img/heap-maps-101/min-heap-add-4-wide.png "Min Heap Add Step 4")
 ```javascript
 else {
   this.heap[parentN] = element;
@@ -92,7 +92,7 @@ else {
 ***
 
 We then need to compare the new element to its parent to see if it smaller or larger. In this case 4 is NOT smaller then 3. Therefore it can stay at its current index.
-!["Min Heap Add Step 5"](/img/min-heap-add-5-wide.png "Min Heap Add Step 5")
+!["Min Heap Add Step 5"](/img/heap-maps-101/min-heap-add-5-wide.png "Min Heap Add Step 5")
 ```javascript
 if (parent <= element) { break; } // true
 ```
@@ -109,17 +109,17 @@ This can be done on logarithmic time **Θ(log n)**
 
 Let's begin.
 
-!["Min Heap Pop Step 1"](/img/pop-min-heap-1-wide.png "Min Heap Pop Step 1")
+!["Min Heap Pop Step 1"](/img/heap-maps-101/pop-min-heap-1-wide.png "Min Heap Pop Step 1")
 
 ***
 
 We need to remove the first index by replacing it with the last index in the array. 
 
-!["Min Heap Pop Step 2"](/img/pop-min-heap-2-wide.png "Min Heap Pop Step 2")
+!["Min Heap Pop Step 2"](/img/heap-maps-101/pop-min-heap-2-wide.png "Min Heap Pop Step 2")
 ```javascript
 const peek = this.heap[1];
 ```
-!["Min Heap Pop Step 3"](/img/pop-min-heap-3-wide.png "Min Heap Pop Step 3")
+!["Min Heap Pop Step 3"](/img/heap-maps-101/pop-min-heap-3-wide.png "Min Heap Pop Step 3")
 ```javascript
 const end = this.heap.pop();
 this.heap[1] = end;
@@ -127,7 +127,7 @@ this.heap[1] = end;
 ***
 
 We need to check the left child against the parent to see if it is smaller. In this case 5 is smaller then 22. Now lets save the index number of the left child which is 2.
-!["Min Heap Pop Step 4"](/img/pop-min-heap-4-wide.png "Min Heap Pop Step 4")
+!["Min Heap Pop Step 4"](/img/heap-maps-101/pop-min-heap-4-wide.png "Min Heap Pop Step 4")
 ```javascript
 var leftScore = this.compare(parent, leftChild);
 if (leftScore > 0) { // true
@@ -139,11 +139,11 @@ if (leftScore > 0) { // true
 
 We will do the same comparison to the right child. In this case 7 is smaller then 22. But before we can save the child's index we need to compare it to the left child. 5 is smaller then 7 so we actually don't need to save the the right child's index.
 
-!["Min Heap Pop Step 5a"](/img/pop-min-heap-5-wide.png "Min Heap Pop Step 5a")
+!["Min Heap Pop Step 5a"](/img/heap-maps-101/pop-min-heap-5-wide.png "Min Heap Pop Step 5a")
 ```javascript
 const rightScore = this.compare(parent, rightChild);
 ```
-!["Min Heap Pop Step 5b"](/img/pop-min-heap-5b-wide.png "Min Heap Pop Step 5b")
+!["Min Heap Pop Step 5b"](/img/heap-maps-101/pop-min-heap-5b-wide.png "Min Heap Pop Step 5b")
 ```javascript
 if (rightScore > leftScore) { // false
   swapN = rightN;
@@ -153,7 +153,7 @@ if (rightScore > leftScore) { // false
 ***
 
 Now we swap the indexes between the parent and child
-!["Min Heap Pop Step 6"](/img/pop-min-heap-6-wide.png "Min Heap Pop Step 6")
+!["Min Heap Pop Step 6"](/img/heap-maps-101/pop-min-heap-6-wide.png "Min Heap Pop Step 6")
 ```javascript
 // swapN = leftN
 this.heap[n] = this.heap[swapN];
@@ -167,7 +167,7 @@ n = swapN;
 
 We need to check the left child against the parent to see if it is smaller. In this case 34 is NOT smaller then 22. So we do NOT save the index number of the left child.
 
-!["Min Heap Pop Step 7"](/img/pop-min-heap-7-wide.png "Min Heap Pop Step 7")
+!["Min Heap Pop Step 7"](/img/heap-maps-101/pop-min-heap-7-wide.png "Min Heap Pop Step 7")
 ```javascript
 var leftScore = this.compare(parent, leftChild);
 if (leftScore > 0) { // false
@@ -178,11 +178,11 @@ if (leftScore > 0) { // false
 ***
 Next we comparison the right child it's parent. In this case 15 is smaller then 22. Since we haven't saved a "swap" index and we know the child is smaller then it's parent, we can save the index number of the right child which is 5.
 
-!["Min Heap Pop Step 8"](/img/pop-min-heap-8-wide.png "Min Heap Pop Step 8")
+!["Min Heap Pop Step 8"](/img/heap-maps-101/pop-min-heap-8-wide.png "Min Heap Pop Step 8")
 ```javascript
 const rightScore = this.compare(parent, rightChild);
 ```
-!["Min Heap Pop Step 9"](/img/pop-min-heap-9-wide.png "Min Heap Pop Step 9")
+!["Min Heap Pop Step 9"](/img/heap-maps-101/pop-min-heap-9-wide.png "Min Heap Pop Step 9")
 ```javascript
 if ((swapN == null && rightScore > 0)) { // true
   swapN = rightN;
@@ -193,7 +193,7 @@ if ((swapN == null && rightScore > 0)) { // true
 
 Now we swap the indexes between the parent and child
 
-!["Min Heap Pop Step 10"](/img/pop-min-heap-10-wide.png "Min Heap Pop Step 10")
+!["Min Heap Pop Step 10"](/img/heap-maps-101/pop-min-heap-10-wide.png "Min Heap Pop Step 10")
 ```javascript
 // swapN = rightN
 this.heap[n] = this.heap[swapN];

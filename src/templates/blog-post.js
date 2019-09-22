@@ -24,7 +24,6 @@ export class BlogPostTemplate extends Component {
       helmet
     } = this.props;
     const PostContent = contentComponent || Content;
-    console.log(featuredImage);
     return (
       <section className={stylesheet.section}>
         {helmet || ""}
