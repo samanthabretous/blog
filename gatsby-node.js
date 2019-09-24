@@ -2,7 +2,9 @@ const _ = require("lodash");
 const path = require("path");
 const {createFilePath} = require("gatsby-source-filesystem");
 const {fmImagesToRelative} = require("gatsby-remark-relative-images");
-
+// to debug
+// node --nolazy --inspect-brk node_modules/.bin/gatsby develop
+// if it not working run npm run clean
 exports.createPages = ({actions, graphql}) => {
   const {createPage} = actions;
 

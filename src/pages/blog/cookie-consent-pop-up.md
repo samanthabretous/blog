@@ -1,12 +1,12 @@
 ---
 templateKey: blog-post
-title: Build Cookie Consent Pop Up in React
+title: Building a Cookie Consent Pop Up in React
 date: 2019-10-12T10:34:22.668Z
-featuredImage: /img/adding-additional-widgets/adding-additional-widgets-to-netlify-cms-thumb.png
-thumbnail: /img/adding-additional-widgets/adding-additional-widgets-to-netlify-cms-thumb.png
+featuredImage: /img/cookie/consent-form/cookie-consent-pop-up.png
+thumbnail: /img/cookie/consent-form/cookie-consent-pop-up.png
 isFeaturedPost: false
 draft: true
-description: All websites now a days a cookie consent notification on it so why shouldn't my website have one too. Follow along so your React website can be up to date with all that legal jargon.
+description: All websites now a days include a cookie consent notification. So why shouldn't my website have one too? Follow along so your React website can be up to date with all that legal jargon.
 tags:
   - tutorial
   - cookie
@@ -16,28 +16,30 @@ In a world where data collection laws are strict, it is vital to let users know 
 
 There are tons of consent form plugins you can add to your website. While they are great to use, I tend to try and avoid adding a bunch of unnecessary code to my website. And now you have to either. So I made a light weight version of a cookie consent form you can steal and put on your website for free. 
 
-One thing I have also done is in my google analytics script I have chosen to not collect any personal data. By updating the config function I am anonymizing IP addresses for all events. Always check your function syntax against the [Google developers example](https://developers.google.com/analytics/devguides/collection/analyticsjs/ip-anonymization) before you add it to your existing tracking code. This will make sure you avoid any syntax errors.
+One thing I have also done is in my google analytics script I have chosen to not collect any personal data. By updating the config function I am anonymizing IP addresses for all events. Always check your function syntax against the [Google developers docs](https://developers.google.com/analytics/devguides/collection/analyticsjs/ip-anonymization) before you add it to your existing tracking code. This will make sure you avoid any syntax errors as the API might have change at the time of this writing.
 
 ```javascript
+// use one or the other depending on the Google Analytics API you are using
+
 // usage for gtag.js
 gtag('config', <'GA_TRACKING_ID'>, { anonymize_ip: true })
-```
-
-```javascript
 // usage for analytics.js
 ga('set', 'anonymizeIp', true)
 ```
 
-Technically when adding this line we are no longer collecting personal data so a consent form is not required. Please note I'm not a lawyer, I just build cool stuff. So this and this whole article may not necessarily be [GDPR](https://eugdpr.org/) compliant. Please do your own research and don't _crumb_ at me, bro!
+Technically when adding this line we are no longer collecting personal data so a consent agreement is not required. Through you should put it in your privacy policy, and show a notification. Please note I'm not a lawyer, I just build cool stuff. So this and this whole article may not necessarily be [GDPR](https://eugdpr.org/) compliant. Please do your own research and don't _crumb_ at me, bro!
 
 <img src="https://media.giphy.com/media/8cfNwKytlzCVhhElCq/giphy.gif" /></div>
 
+
+### What we will building
+!["cookie consent form design"](/img/cookie-consent-form/cookie-consent-form-final-results.png "cookie consent form design")
 
 #### Step 1
 First order of business is to create a React component called `CookiePopUp`. We will need to call this component on the global page within the code. This is so no matter what page the user lands on the cookie modal will appear. For me, I do not have a global file but instead a component called `Layout` that includes all my meta data that I insert on all my pages. 
 
 ```javascript
-import React from "react"
+import React, { useState } from "react";
 
 export default const CookiePopUp = () => {
   return <p>I am the beginning of a yummy consent</p>
@@ -55,7 +57,7 @@ Next, we need to create a function that sets a cookie that we will use later whe
    * @param cvalue - cookie value
    * @param exdays - expiry in days
    */
-  const _setCookie = (cname, cvalue, exdays) => {
+  const setCookie = (cname, cvalue, exdays) => {
     const d = new Date();
     d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
     const expires = "expires=" + d.toUTCString();
@@ -71,29 +73,107 @@ We also need to create a function to get the cookie that we can use to determine
 [DESSCRIBE WHATS GOING ON HERE]
 
 ```javascript
-function getCookie(cname) {
-  var name = cname + "=";
-  var decodedCookie = decodeURIComponent(document.cookie);
-  var ca = decodedCookie.split(';');
-  for(var i = 0; i <ca.length; i++) {
-    var c = ca[i];
-    while (c.charAt(0) == ' ') {
-      c = c.substring(1);
+  /**
+   * Get a cookie
+   * @param cname - cookie name
+   * @returns string
+   */
+  const getCookie = cname => {
+    const name = cname + "=";
+    const ca = document.cookie.split(";");
+    for (let i = 0; i < ca.length; i++) {
+      const c = ca[i];
+      while (c.charAt(0) == " ") {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
     }
-    if (c.indexOf(name) == 0) {
-      return c.substring(name.length, c.length);
-    }
-  }
-  return "";
-}
+    return "";
+  };
 ```
 
 ***
-
 #### Step 4
+
+```javascript 
+const [shouldShowPopUp, setShouldShowPopUp] = useState(
+  !getCookie(cookieName)
+);
+
+return shouldShowPopUp && <p>I am the beginning of a yummy consent</p>
+``` 
+***
+
+#### Step 4 
+```javascript
+  const hidePopUp = () => {
+    setCookie(cookieName, true, cookieLifeSpan);
+    setShouldShowPopUp(!getCookie(cookieName));
+  };
+```
+
+#### Step 5
 We will go head and add some [jsx](https://reactjs.org/docs/introducing-jsx.html) to the `CookiePopUp` component. The only part that is important here is the `GOT IT` button. We do not want the pop to go away unless the user presses the button. 
 
+```jsx
+<div
+  className={stylesheet.cookieJar}
+  tabIndex="-1"
+  role="dialog"
+  aria-labelledby="cookiePopUp"
+>
+  <p className={stylesheet.cookiesCopy}>
+    This website uses cookies to ensure you get the best experience on our
+    website.
+    <a href="/link-to-your-policy" className={stylesheet.policyLink}> Learn more</a>
+  </p>
+  <button
+    onClick={hidePopUp}
+    className={stylesheet.consentBtn}
+  >
+    GOT IT
+  </button>
+</div>
 ```
+
+Don't forget about the css 
+```css
+.cookieJar {
+    background: #2e307c;
+    border: 3px solid #f4bba8;
+    border-radius: 15px;
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: fixed;
+    z-index: 1;
+    bottom: 24px;
+    left: 15%;
+    padding: 0 1%;
+}
+
+.cookiesCopy {
+    color: #f4bba8;
+}
+
+.policyLink {
+    color: #f4bba8;
+    text-decoration: none; 
+}
+
+.policyLink:hover {
+    color: #ffffff;
+}
+
+.consentBtn {
+    color: #ffffff;
+    background: none;
+    border: none;
+    flex-shrink: 0; 
+}
 ```
 
 #### Step 

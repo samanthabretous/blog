@@ -2,6 +2,7 @@ import React from "react";
 import {Helmet} from "react-helmet";
 import useSiteMetadata from "./SiteMetadata";
 import {withPrefix} from "gatsby";
+import CookiePopUp from "./CookiePopUp";
 
 const TemplateWrapper = ({children}) => {
   const {title, description} = useSiteMetadata();
@@ -45,6 +46,7 @@ const TemplateWrapper = ({children}) => {
           content={`${withPrefix("/")}img/samantha_bretous_ogimage.png`}
         />
       </Helmet>
+      {/* <CookiePopUp /> */}
       <div>{children}</div>
     </div>
   );

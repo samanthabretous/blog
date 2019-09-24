@@ -2,6 +2,7 @@
 
 body {
     margin: 0;
+    box-sizing: border-box;
 }
 
 html {
@@ -11,13 +12,13 @@ html {
 h1 {
     font-size: @font-size--h1;
     font-family: @font-family--base;
-    font-weight: 800;
+    line-height: @font-size--h2;
 }
 
 h2 {
     font-size: @font-size--h2;
     font-family: @font-family--base;
-    font-weight: 800;
+    font-weight: 900;
 }
 
 h3 {
@@ -32,6 +33,7 @@ h4 {
 
 h5 {
     font-size: @font-size--h5;
+    font-weight: 400;
 }
 
 p {
@@ -45,6 +47,12 @@ li {
 }
 
 a {
+    font-size: 1.2rem;
+    font-family: @font-family--base;
+}
+
+button {
+    font-weight: 300;
     font-size: 1.2rem;
     font-family: @font-family--base;
 }
