@@ -13,14 +13,15 @@ tags:
   - algoritms
 ---
 
-Great another tutorial on heap maps. Good news is there can never be enough tutorials on heap maps because they can be trick to understand. First thing to know is a heap map is a set of values stored in a specific order that allows efficient access or modification. Heap maps are usually represented in a tree structure and there is only two sorting directions the tree values can be stored. Heap map can be either be ascending (smallest number is at the top) called a **min heap** or descending(where the largest number is at the top) known as a **max heap**.
+Great another tutorial on heap maps. Good news is there can never be enough tutorials on heap maps since they can be trick to understand. Plus this one includes a bunch of diagrams. So a heap maps, also known as a heap, is a set of values stored in a specific order that allows efficient access or modification. Heap maps are usually represented in a tree structure and there is only two sorting directions the tree's values can be stored. There are  **min heaps** where the smallest number is represented at the top or a **max heap** where the largest number is represented at the top.
 
 !["Binary Min Max Heap Map Comparison"](/img/heap-maps-101/min-max-heap-diagram.png "Binary Min Max Heap Map Comparison")
 
 ### Why use a heap map
-We have to first look at the problem we are trying to solve. If you want to find the smallest or the largest element quickly then heap map is the answer. This is because we are always sorting the heap when elements are entering or leaving. One of the biggest benefits is not having to look at every element when sorting elements. In tree structure, after looking at the first row of children and determining which branch to follow we are eliminating having to look at least half of the tree. In small heap maps the benefits may not be apparent but with larger heap map it is plenty. 
+To decide if a heap map is the right thing to use we have to first look at the problem we are trying to solve. If you want to find the smallest or largest value quickly then a heap map is the answer. This is because we are always sorting the heap when elements are entering or leaving. One of the biggest benefits of this implementation is not having to look at every element when sorting. In tree structure, after looking at the first row of children and determining which branch to follow we are eliminating having to look at least half of the tree. In small heap maps the benefits may not be apparent but with larger heap map it is plenty. 
 
-The most common implementation of heaps are the _binary_ kind. This is where a parent node can only have up to _two_ child. And we can track the parent's children using a solution like this.
+The most common implementation of heaps are the _binary_ kind. This is where a parent element can only have up to _two_ children. And we can track the parent's children using a solution like this.
+
 ```javascript
 class Node {
   constructor(val, left, right) {
@@ -30,7 +31,8 @@ class Node {
   }
 }
 ```
-The reason why binary heap maps are so common is because instead of worrying about linking and keeping track of objects, we can take advantage of using an array to store and sort the values. We will always be able to find a parent's left child by using this fail proof -- super complicated -- formula of `index * 2` and the right child `(index*2) + 1`. As an alternative we can find a child's parent by doing another fool proof -- even more complicated -- formula of `index / 2`.
+
+The reason why binary heap maps are so common is because instead of worrying about linking and keeping track of elements, we can take advantage of using an array to store and sort values. We will always be able to find a parent's left child by using this fail proof -- super complicated -- formula of `index * 2` and the right child by adding one to the left child. As an alternative we can find a child's parent by doing another fool proof -- even more complicated -- formula of `index / 2`.
 
 **Examples of Heap Maps**
 - A* Algoritrim
@@ -39,34 +41,32 @@ The reason why binary heap maps are so common is because instead of worrying abo
 - Whole Food checkout customers ¯\ __ (ツ) __ /¯
 
 ### [Are Priority Queues and Heap Maps the same](#priority-queue-verses-heap-map)
-Short answer. Yes. Priority queues are an idea verses an implementation. Long answer. Ummmmmm, sure! Priority queues can have any underlying data structure like an array, link list, hash map, binary tree, or a heap map. As long as you can get the highest priority element, it is an priority queue. And depending which operation (peek, add, remove) needs to be the most efficient is best way to chose the data structure to use.  
+Short answer. Yes. Priority queues are an idea verses an implementation. Long answer. Ummmmmm, sure! Priority queues can have any underlying data structure like an array, link list, hash map, binary tree, or a **heap map**. As long as you can get the highest priority element, it is an priority queue. An the best way to chose which data structure to use depends on which operation (peek, add, remove) needs to be the most efficient.  
 
 !["Data Structure Runtime Representations"](/img/heap-maps-101/lmu-data-structure-references.png "Data Structure Runtime Representations")
 
 Source [CS LMU edu](https://cs.lmu.edu/~ray/notes/pqueues/)
 
-As a small side note: Usually when choosing a heap structure we would like to only remove the `peek` element. But we are not limited to that. We can remove any element by creating another function. If removing a random element is a very important feature, it would be best to choose a different data structure like a binary search tree(BST). This is because heaps are better at finding the min or max. Whereas binary search trees are good at find all elements, since its ordered from left to right.
+As a small side note: Usually when choosing a heap structure we would like to only remove the `peek` element. This doesn't mean we are not limited to that. We can remove any element by creating another function. If removing a random element is a very important feature, it would be best to choose a different data structure like a binary search tree(BST). This is because heaps are better at finding the min or max. Whereas binary search trees are good at find all elements, since its ordered from left to right. Just something to keep in mind.
 
 ***
 
-Another note: You will notice through out this tutorial I left the array index 0 as null. When learning how to implement an heap maps most tutorials I followed were not in JavaScript and left the the first index 0 as well. And I wanted you to have a good comparison when looking at other tutorials.
+### [Peek](#peak) - Min Heap
+Element with the smallest value. This is constant time look up. **Θ(1)**
 
-### [Peek](#peak)
-Element at index 1. It is constant time look up. **Θ(1)**
+### [Add](#add) - Binary Min Heap
+When an element is added to the heap map we push it to the last index of the array. Then we would need to "bubble it up". This new element will alway be a child element until it is in its final position. So we need to compare the child element and swap array indexes with it's parent as needed. 
 
-### [Add](#add)
-When an element is added to the heap map we push it to the last index of the array. Then we would need to "bubble it up". This new element will alway be a child element until it is in its final position. So we need to compare the child element and swap array indexes as needed. 
-
-This can be done on logarithmic time **Θ(log n)**
+This can be done on logarithmic time. **Θ(log n)**
 
 Let's begin 
 
-!["Min Heap Add Step 1"](/img/heap-maps-101/min-heap-add-1-wide.png "Min Heap Add Step 1")
+!["Binary Min Heap Add Step 1"](/img/heap-maps-101/min-heap-add-1-wide.png "Binary Min Heap Add")
 
 *** 
 
-We first start with adding the new element to the back of the array. 
-!["Min Heap Add Step 2"](/img/heap-maps-101/min-heap-add-2-wide.png "Min Heap Add Step 2")
+We first start by adding the new element to the end of the array. 
+!["Binary Min Heap Add Step 1"](/img/heap-maps-101/min-heap-add-2-wide.png "Binary Min Heap Add Step 1")
 ```javascript
 this.heap.push(element);
 ```
@@ -74,60 +74,63 @@ this.heap.push(element);
 ***
 
 We then need to compare this new element to its parent to see if it smaller or larger. In this case 2 is smaller then 7. We can swap the two elements.
-!["Min Heap Add Step 3"](/img/heap-maps-101/min-heap-add-3-wide.png "Min Heap Add Step 3")
+!["Binary Min Heap Add Step 2"](/img/heap-maps-101/min-heap-add-3-wide.png "Binary Min Heap Add Step 2")
 ```javascript
 if (parent <= element) { break; } // false
-```
-
-!["Min Heap Add Step 4"](/img/heap-maps-101/min-heap-add-4-wide.png "Min Heap Add Step 4")
-```javascript
 else {
   this.heap[parentN] = element;
   this.heap[n] = parent;
 }
 ```
 
+
+
 **The first loop is over so we start the comparisons again**
 
 ***
 
 We then need to compare the new element to its parent to see if it smaller or larger. In this case 4 is NOT smaller then 3. Therefore it can stay at its current index.
-!["Min Heap Add Step 5"](/img/heap-maps-101/min-heap-add-5-wide.png "Min Heap Add Step 5")
+!["Binary Min Heap Add Step 3"](/img/heap-maps-101/min-heap-add-4-wide.png "Binary Min Heap Add Step 3")
 ```javascript
 if (parent <= element) { break; } // true
+else {
+  this.heap[parentN] = element;
+  this.heap[n] = parent;
+}
 ```
-
 **YAY the heap is in order!!!!**
+!["Binary Min Heap Add Step 4"](/img/heap-maps-101/min-heap-add-5-wide.png "Binary Min Heap Add Step 4")
+
 
 ### POP
 
-When an element is removed it creates an hole in the array. We need to fill that hole with the last element in the array. 
+When an element is removed it creates a hole in the array. We need to fill that hole with the last element in the array. 
 
-We would then need to shuffle the element down in to the correct balanced position. By doing so we are comparing the element's with it's new children  and swapping array indexes when needed.
+We would then need to shuffle the element down into the correct balanced position. By doing so we are comparing the new element with it's children and swapping array indexes when needed.
 
-This can be done on logarithmic time **Θ(log n)**
+This can be done on logarithmic time. **Θ(log n)**
 
 Let's begin.
 
-!["Min Heap Pop Step 1"](/img/heap-maps-101/pop-min-heap-1-wide.png "Min Heap Pop Step 1")
+!["Binary Min Heap Pop"](/img/heap-maps-101/pop-min-heap-1-wide.png "Binary Min Heap Pop")
 
 ***
 
 We need to remove the first index by replacing it with the last index in the array. 
 
-!["Min Heap Pop Step 2"](/img/heap-maps-101/pop-min-heap-2-wide.png "Min Heap Pop Step 2")
+!["Binary Min Heap Pop Step 1"](/img/heap-maps-101/pop-min-heap-2-wide.png "Binary Min Heap Pop Step 1")
 ```javascript
 const peek = this.heap[1];
 ```
-!["Min Heap Pop Step 3"](/img/heap-maps-101/pop-min-heap-3-wide.png "Min Heap Pop Step 3")
+!["Binary Min Heap Pop Step 2"](/img/heap-maps-101/pop-min-heap-3-wide.png "Binary Min Heap Pop Step 2")
 ```javascript
 const end = this.heap.pop();
 this.heap[1] = end;
 ```
 ***
 
-We need to check the left child against the parent to see if it is smaller. In this case 5 is smaller then 22. Now lets save the index number of the left child which is 2.
-!["Min Heap Pop Step 4"](/img/heap-maps-101/pop-min-heap-4-wide.png "Min Heap Pop Step 4")
+Next, check the left child against the parent to see if it is smaller. In this case 5 is smaller then 22. Now lets save the index number of the left child which is 2.
+!["Binary Min Heap Pop Step 3"](/img/heap-maps-101/pop-min-heap-4-wide.png "Binary Min Heap Pop Step 3")
 ```javascript
 var leftScore = this.compare(parent, leftChild);
 if (leftScore > 0) { // true
@@ -137,13 +140,14 @@ if (leftScore > 0) { // true
 
 ***
 
-We will do the same comparison to the right child. In this case 7 is smaller then 22. But before we can save the child's index we need to compare it to the left child. 5 is smaller then 7 so we actually don't need to save the the right child's index.
+We will do the same comparison to the right child. In this case 7 is smaller then 22. 
 
-!["Min Heap Pop Step 5a"](/img/heap-maps-101/pop-min-heap-5-wide.png "Min Heap Pop Step 5a")
+!["Binary Min Heap Pop Step 4a"](/img/heap-maps-101/pop-min-heap-5-wide.png "Binary Min Heap Pop Step 4a")
 ```javascript
 const rightScore = this.compare(parent, rightChild);
 ```
-!["Min Heap Pop Step 5b"](/img/heap-maps-101/pop-min-heap-5b-wide.png "Min Heap Pop Step 5b")
+But before we can save the right child's index we need to compare it to the left child. 5 is smaller then 7 so we actually don't need to save the the right child's index.
+!["Binary Min Heap Pop Step 4b"](/img/heap-maps-101/pop-min-heap-5b-wide.png "Binary Min Heap Pop Step 4b")
 ```javascript
 if (rightScore > leftScore) { // false
   swapN = rightN;
@@ -152,8 +156,8 @@ if (rightScore > leftScore) { // false
 
 ***
 
-Now we swap the indexes between the parent and child
-!["Min Heap Pop Step 6"](/img/heap-maps-101/pop-min-heap-6-wide.png "Min Heap Pop Step 6")
+Now we swap the indexes between the parent and the left child
+!["Binary Min Heap Pop Step 5"](/img/heap-maps-101/pop-min-heap-6-wide.png "Binary Min Heap Pop Step 5")
 ```javascript
 // swapN = leftN
 this.heap[n] = this.heap[swapN];
@@ -176,24 +180,18 @@ if (leftScore > 0) { // false
 ```
 
 ***
-Next we comparison the right child it's parent. In this case 15 is smaller then 22. Since we haven't saved a "swap" index and we know the child is smaller then it's parent, we can save the index number of the right child which is 5.
+Next, we comparison the right child to it's parent. In this case 15 is smaller then 22. Since we haven't saved a "swap" index and we know the child is smaller then it's parent, we can save the index number of the right child which is 5.
 
 !["Min Heap Pop Step 8"](/img/heap-maps-101/pop-min-heap-8-wide.png "Min Heap Pop Step 8")
 ```javascript
 const rightScore = this.compare(parent, rightChild);
-```
-!["Min Heap Pop Step 9"](/img/heap-maps-101/pop-min-heap-9-wide.png "Min Heap Pop Step 9")
-```javascript
 if ((swapN == null && rightScore > 0)) { // true
   swapN = rightN;
 }
 ```
 
-***
-
 Now we swap the indexes between the parent and child
-
-!["Min Heap Pop Step 10"](/img/heap-maps-101/pop-min-heap-10-wide.png "Min Heap Pop Step 10")
+!["Min Heap Pop Step 9"](/img/heap-maps-101/pop-min-heap-9-wide.png "Min Heap Pop Step 9")
 ```javascript
 // swapN = rightN
 this.heap[n] = this.heap[swapN];
@@ -201,9 +199,15 @@ this.heap[swapN] = parent;
 n = swapN;
 ```
 
-**YAY the heap is in order!!!!**
+***
 
-When learning how to implement an heap map I followed [Eloquent JavaScript](http://eloquentjavascript.net/1st_edition/appendix2.html) heap map implementation. It has a score function, which I didn't found it not very useful. So I created a `compare` function that determines if the parent is larger by returning a positive number.
+**YAY the heap is in order!!!!**
+!["Min Heap Pop Step 10"](/img/heap-maps-101/pop-min-heap-10-wide.png "Min Heap Pop Step 10")
+
+
+When learning how to implement an heap map in JavaScript I followed [Eloquent JavaScript](http://eloquentjavascript.net/1st_edition/appendix2.html) heap map implementation. It has a score function, which I didn't found very useful. So I created a `compare` function that determines if the parent is larger by returning a positive number. 
+
+You might have also noticed I left the array index 0 as null. You by no means need to do the same. When learning how to implement an heap maps most tutorials I followed were not in JavaScript and left the the first index 0 as well. And I wanted to have a good comparison when looking at other tutorials.
 
 Now the part we have all been waiting for. The full code!!!
 ```javascript
@@ -222,7 +226,7 @@ class BinaryHeap {
   }
 
   /**
-   * Determing if the parent is larger then its child.
+   * Determine if the parent is larger then its child.
    * Returning a positive number means parent is larger
    * @param {number} parent
    * @param {number} child
@@ -234,7 +238,7 @@ class BinaryHeap {
   }
 
   /**
-   * Get the peek element fill the in the holw with the last element in array
+   * Get the peek element fill the in the hole with the last element in array
    * Then sort the replaced element.
    *
    * return number
@@ -259,7 +263,6 @@ class BinaryHeap {
   add(element) {
     this.heap.push(element);
     this.bubbleUp(this.size() - 1);
-    // console.log(JSON.parse(JSON.stringify(this.heap)));
   }
 
   /**
@@ -279,7 +282,7 @@ class BinaryHeap {
       // and we can leave it in its current index
       if (this.compare(parent, element) < 0) break;
 
-      //Otherwise swap the parent and child
+      // Otherwise swap the parent and child
       this.heap[parentN] = element;
       this.heap[n] = parent;
       n = parentN;
@@ -299,7 +302,7 @@ class BinaryHeap {
       // If the first child exists (is inside the array)...
       if (leftN < length) {
         const leftChild = this.heap[leftN];
-        //positive result means the parent is larger
+        // positive result means the parent is larger
         var leftScore = this.compare(parent, leftChild);
         if (leftScore > 0) swapN = leftN;
       }
@@ -335,6 +338,6 @@ const heap = new BinaryHeap();
 });
 // When looping the console will show the ending heap map over and over. 
 //You can use this to see whats in going on step by step in the console.
-// It is hacky don't quote me. :)
+// It is HACKY don't quote me. :)
 console.log(JSON.parse(JSON.stringify(heap.heap)));
 ```
