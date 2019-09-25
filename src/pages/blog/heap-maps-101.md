@@ -2,8 +2,8 @@
 templateKey: blog-post
 title: Heap Maps 101
 date: 2018-10-20T14:04:10.000Z
-isFeaturedPost: false
-draft: true
+isFeaturedPost: true
+draft: false
 description: What is a heap map? How can I implement one one in JavaScript? All that and more in this blog post breaking down heap maps.
 featuredImage: /img/heap-map-rundown.png
 thumbnail: /img/heap-map-rundown.png
@@ -13,12 +13,12 @@ tags:
   - algoritms
 ---
 
-Great another tutorial on heap maps. Good news is there can never be enough tutorials on heap maps since they can be trick to understand. Plus this one includes a bunch of diagrams. So a heap maps, also known as a heap, is a set of values stored in a specific order that allows efficient access or modification. Heap maps are usually represented in a tree structure and there is only two sorting directions the tree's values can be stored. There are  **min heaps** where the smallest number is represented at the top or a **max heap** where the largest number is represented at the top.
+Good news. I created another tutorial on heap maps that will live on the web. And this one includes a bunch of colorful diagrams. So a heap map, also known as a heap, is a set of values stored in a specific order that allows efficient access or modification. Heap maps are usually represented in a tree structure and only two sorting directions the tree's values can be stored. There are  **min heaps** where the smallest number is represented at the top or a **max heap** where the largest number is represented at the top.
 
 !["Binary Min Max Heap Map Comparison"](/img/heap-maps-101/min-max-heap-diagram.png "Binary Min Max Heap Map Comparison")
 
 ### Why use a heap map
-To decide if a heap map is the right thing to use we have to first look at the problem we are trying to solve. If you want to find the smallest or largest value quickly then a heap map is the answer. This is because we are always sorting the heap when elements are entering or leaving. One of the biggest benefits of this implementation is not having to look at every element when sorting. In tree structure, after looking at the first row of children and determining which branch to follow we are eliminating having to look at least half of the tree. In small heap maps the benefits may not be apparent but with larger heap map it is plenty. 
+To decide if a heap map is the right thing to use we have to first look at the problem we are trying to solve. If you want to find the smallest or largest value quickly then a heap map is the answer. This is because we are always sorting the heap when elements are entering or leaving. One of the biggest benefits of this implementation is not having to look at every element when sorting. In tree structures, after looking at the first row of children and determining which branch to follow, we are eliminating having to look at least half of the tree. In small heap maps the benefits may not be apparent, but with larger heap maps the benefits are plenty. 
 
 The most common implementation of heaps are the _binary_ kind. This is where a parent element can only have up to _two_ children. And we can track the parent's children using a solution like this.
 

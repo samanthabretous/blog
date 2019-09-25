@@ -4,7 +4,7 @@ title: Black Women Equal Pay Day - Here's How You Can Help
 date: 2019-09-01T10:34:22.668Z
 featuredImage: /img/im_a_statistic_black_woment_equal_pay_day_samantha_bretous_hero.png
 thumbnail: /img/im_a_statistic_black_women_equal_pay_day_samantha_bretous.png
-isFeaturedPost: true
+isFeaturedPost: false
 draft: false
 description: On average black women get paid 61 cents to every dollar paid to white, non-Hispanic men, but this path doesn't need to continue. With your help we can start closing the pay gap for black women.
 tags:
