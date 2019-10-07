@@ -7,7 +7,7 @@ import stylesheet from "./BlogRoll.module.less";
 class BlogRoll extends React.Component {
   render() {
     const {data} = this.props;
-    const {edges: posts} = data.allMarkdownRemark;
+    const {edges: posts} = data.allMdx;
     const featured = posts.find(post => post.node.frontmatter.isFeaturedPost)
       .node;
     return (
@@ -80,7 +80,7 @@ class BlogRoll extends React.Component {
 
 BlogRoll.propTypes = {
   data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
+    allMdx: PropTypes.shape({
       edges: PropTypes.array
     })
   })
@@ -90,7 +90,7 @@ export default () => (
   <StaticQuery
     query={graphql`
       query BlogRollQuery {
-        allMarkdownRemark(
+        allMdx(
           sort: {order: DESC, fields: [frontmatter___date]}
           filter: {frontmatter: {templateKey: {eq: "blog-post"}}}
         ) {

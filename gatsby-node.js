@@ -2,15 +2,16 @@ const _ = require("lodash");
 const path = require("path");
 const {createFilePath} = require("gatsby-source-filesystem");
 const {fmImagesToRelative} = require("gatsby-remark-relative-images");
+const readingTime = require("reading-time");
 // to debug
 // node --nolazy --inspect-brk node_modules/.bin/gatsby develop
-// if it not working run npm run clean
+// if it not working do npm run clean
 exports.createPages = ({actions, graphql}) => {
   const {createPage} = actions;
 
   return graphql(`
     {
-      allMarkdownRemark(limit: 1000) {
+      allMdx(limit: 1000) {
         edges {
           node {
             id
@@ -31,19 +32,18 @@ exports.createPages = ({actions, graphql}) => {
       return Promise.reject(result.errors);
     }
 
-    const posts = result.data.allMarkdownRemark.edges;
+    const posts = result.data.allMdx.edges;
 
-    posts.forEach(edge => {
-      const id = edge.node.id;
+    posts.forEach(({node}) => {
       createPage({
-        path: edge.node.fields.slug,
-        tags: edge.node.frontmatter.tags,
+        path: node.fields.slug,
+        tags: node.frontmatter.tags,
         component: path.resolve(
-          `src/templates/${String(edge.node.frontmatter.templateKey)}.js`
+          `src/templates/${String(node.frontmatter.templateKey)}.js`
         ),
         // additional data can be passed via context
         context: {
-          id
+          id: node.id
         }
       });
     });
@@ -78,12 +78,17 @@ exports.onCreateNode = ({node, actions, getNode}) => {
   const {createNodeField} = actions;
   fmImagesToRelative(node); // convert image paths for gatsby images
 
-  if (node.internal.type === `MarkdownRemark`) {
+  if (node.internal.type === `Mdx`) {
     const value = createFilePath({node, getNode});
     createNodeField({
       name: `slug`,
       node,
-      value
+      value: `/blog${value}`
+    });
+    createNodeField({
+      name: `readingTime`,
+      node,
+      value: readingTime(node.rawBody)
     });
   }
 };

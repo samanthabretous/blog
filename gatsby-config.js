@@ -8,7 +8,6 @@ module.exports = {
   plugins: [
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-less",
-    "gatsby-remark-reading-time",
     "gatsby-plugin-twitter",
     {
       // keep as first gatsby-source-filesystem plugin for gatsby image support
@@ -35,11 +34,19 @@ module.exports = {
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
     {
-      resolve: "gatsby-transformer-remark",
+      resolve: "gatsby-plugin-mdx",
       options: {
+        extensions: [`.mdx`, `.md`],
         plugins: [
           "gatsby-remark-autolink-headers",
           "gatsby-remark-prismjs",
+          {
+            resolve: "gatsby-source-filesystem",
+            options: {
+              name: "posts",
+              path: `${__dirname}/stories/`
+            }
+          },
           {
             resolve: "gatsby-remark-relative-images",
             options: {

@@ -9,8 +9,6 @@ import Content, {HTMLContent} from "../components/Content";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import stylesheet from "./blog-post.module.less";
-import "prismjs";
-import "prismjs/themes/prism-okaidia.css";
 
 export class BlogPostTemplate extends Component {
   render() {
@@ -86,12 +84,12 @@ BlogPostTemplate.propTypes = {
 };
 
 const BlogPost = ({data}) => {
-  const {markdownRemark: post} = data;
+  const {mdx: post} = data;
   return (
     <Layout>
       <Navbar showProgressBar />
       <BlogPostTemplate
-        content={post.html}
+        content={post.body}
         contentComponent={HTMLContent}
         description={post.frontmatter.description}
         helmet={
@@ -122,7 +120,7 @@ const BlogPost = ({data}) => {
 
 BlogPost.propTypes = {
   data: PropTypes.shape({
-    markdownRemark: PropTypes.object
+    mdx: PropTypes.object
   })
 };
 
@@ -130,9 +128,9 @@ export default BlogPost;
 
 export const pageQuery = graphql`
   query BlogPostByID($id: String!) {
-    markdownRemark(id: {eq: $id}) {
+    mdx(id: {eq: $id}) {
       id
-      html
+      body
       fields {
         readingTime {
           text
