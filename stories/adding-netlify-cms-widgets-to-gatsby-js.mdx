@@ -1,0 +1,107 @@
+---
+templateKey: blog-post
+title: Adding Netlify CMS Widgets to Gatsby JS
+date: 2019-09-01T10:34:22.668Z
+featuredImage: /img/adding-additional-widgets/adding-additional-widgets-to-netlify-cms-thumb.png
+thumbnail: /img/adding-additional-widgets/adding-additional-widgets-to-netlify-cms-thumb.png
+isFeaturedPost: true
+draft: false
+description: How to add a custom widget to netlify cms
+tags:
+  - tutorial
+  - d3
+---
+
+Recently I created a blog using [Gatsby](https://www.gatsbyjs.org/) and [Netlify CMS](https://www.netlifycms.org/). Combining the two services was quiet easy, especially, if you start off using the [gatsby-netlify-cms-starter](https://github.com/netlify-templates/gatsby-starter-netlify-cms) template. But do you see the feature image above? Yes, the one with the wooden figures. This image didn't come straight out of the box. In Netlify CMS terms this image is called a [widget](https://www.netlifycms.org/docs/widgets/) and I'm going to walk us through on how to add our own widgets. However, before we can begin, we have to understand the differences between the two services. 
+
+### [So what is Gatsby](#what-is-gatsby)
+If you know React, then the learning curve to build a basic site with Gatsby is not that far off. Gatsby is a static site generators that serves webpages _FAST_.  Gatsby takes advantage of GraphQL to create a data layer with Markdown, JSON, or third party API's -- pretty much where data is available. _So what does that mean?_ Traditionally in web development, when a user lands on a URL we send them back a html file. Then the html file sends out a request to fetch the data needed inorder to render the content. This is called a HTTP Request and Response. Where as with static site generators, content is generated on the server. The server fetches the data and renders the content into a template. Then it send one completed html file to the user. This is how we are able to create faster websites. 
+
+<div style={{display: 'flex', flexDirection: 'row'}}>
+  <img style={{width: '50%'}} src="/img/adding-additional-widgets/traditional-data-fetching-flow.png" alt="Diagram of Traditional Web fetching" />
+  <img style={{width: '50%'}} src="/img/adding-additional-widgets/static-site-generator-flow.png" alt="Diagram of Static site generators" />
+</div>
+
+There are other static site generators like [Jekyll](https://jekyllrb.com/) and [Hugo](https://gohugo.io/). Yet, I choose Gatsby because of the following. 
+- My understanding of React
+- Data fetching with GraphQL is on the rise. I personally don't get to use it in my day job so this is a great way to stay up to date with the technology. 
+- A Gatsby site is also a Progressive Web App(PWA).
+- The Gatsby community is really supportive. There are lot more tutorials on how to use Gatsby verse the other options. Does this blog post count? :)
+
+### [Netlify CMS who dis?](#what-is-netlify-cms)
+
+Netlify and Netlify CMS are from the same family but are two separate entities. I think of Netlify as the infrastructure for Netlify CMS where as the CMS supports all the content for your website. 
+
+In my opinion, the coolest feature of Netlify is its version-controlled site deploys. When we connect an online git repository to Netlify, it will deploy our site automatically for us. **Netlify is the grown-up version of Github Page**. This is because there are quick rollbacks to previous deploys, form handling, deploys with previews, and [much more](https://www.netlify.com/github-pages-vs-netlify/). All of these additonal features are out of scope for Github Pages. 
+
+Attaching our site with Netlify CMS provides us with an online content editor. We can add and management blog posts, pages, products, or any custom content types, without knowing how to write markdown. A huge bonus iwhen saving drafts in the editor, Netlify will do a staging deploy.
+
+### How to add a widget
+Now that we understand the benefits that each service provides, let figure out how to add a widget to our site. For the most part there isn't a clear divide between the two service in the [gatsby-netlify-cms-starter](https://github.com/netlify-templates/gatsby-starter-netlify-cms). Both Gatsby and Netlify CMS both share a large amount of the same files. But that is okay since I was able to break it down to which files we can focus on. 
+
+**These are the files that are important to Gatsby**
+- [gatsby-config.js](https://github.com/netlify-templates/gatsby-starter-netlify-cms/blob/master/gatsby-config.js) - This is the heart of Gatsby. Since Gatsby is built with JavaScript, this means we need to use a lot of npm packages to build our site. In return, we have to tell Gatsby how to use these npm packages. Each package usually includes a set of configuration options to narrow it down to our needs.
+- [gatsby-node.js](https://github.com/netlify-templates/gatsby-starter-netlify-cms/blob/master/gatsby-node.js) - This is the file that kicks off the build. In the starter template, the build will trigger `onCreateNode` first. Within this function Gatsby will begin to grab all the plugin files. This will consist of mostly Gatsby internal files and other plugins from your gatsby config file. Gatsby will then move on to grabbing all you files in `static/img`, which uses `fmImagesToRelative` to convert the relative paths to Gatsby images objects. Lastly, the function goes through all your content files in the `pages` directory. In our case it will be all the markdown files. 
+Next Gatsby will kickoff `onCreatePages`. Within this function Gatsby makes a GraphQL call to get all the markdown files that were turned into nodes by `onCreateNode`. It converts each one into an page object. We can think of a page as what you will see when navigating to a URL. And then runs through all the tags defined in the markdown files to creates page objects from those. Last action of this function, that happens in the background, is to grab all the `.js` files with in the pages directory to create pages. 
+
+_Pretty fancy stuff!!!_
+
+Since this file is in the build process, if you are curious to understand what this file does in more detail, you will need to [run a debugger](https://www.gatsbyjs.org/docs/debugging-the-build-process/) in order to debug.
+```shell
+// running the debugger in VS Code
+$ npm run clean
+$ node --nolazy --inspect-brk node_modules/.bin/gatsby develop
+```
+
+**These are the files that are important to Netlify CMS**
+- [src/cms/**](https://github.com/netlify-templates/gatsby-starter-netlify-cms/tree/master/src/cms) - The Netlify CMS admin editor doesn't understand anything about GraphQL. GraphQL belongs to Gatsby so it reads all the information from the editor itself. When our React files needs data we look for our data coming out of the widgets.
+- [static/admin/config.yml](https://github.com/netlify-templates/gatsby-starter-netlify-cms/blob/master/static/admin/config.yml) - This houses all [collections](https://www.netlifycms.org/docs/collection-types/) which can either be a folder or file collection. These are the field you see in the CMS editor online.
+
+#### Prerequisites:
+Clone [gatsby-netlify-cms-starter](https://github.com/netlify-templates/gatsby-starter-netlify-cms) template and follow the steps in the ReadME. 
+
+#### Step 1 - Field Type: 
+To begin, a field type needs to be added to the blog post collection. We can find this collection in `static/admin/config.yml`. 
+
+```yaml
+- {label: "Featured Image", name: "featuredImage", widget: "image", required: true}
+```
+- label: text that shows up in the admin editor
+- name: field name that get generated in the markdown frontmatter
+- widget: type of widget ie: boolean, date etc
+- required: default is false 
+
+After doing so, run `npm start`. Open [localhost:8000/admin](http://localhost:8000/admin) to view the CMS and select a blog post entry. A `Featured Image` field should appear in the editor. Once you confirm that this new field type is available, commit the changes and push it to the online repository that is connected to Netlify. 
+
+#### Step 2 - Creating New Frontmatter Item:
+Within the CMS editor, add an image to the Featured Image field and publish the blog post. When publishing, the CMS creates a commit message and pushes it to our master branch. Netlify will pick up the change and deploy our site.
+
+Now that master has been updated, let's keep everything in sync and pull down from master in your terminal. Navigate to the markdown file that is related to the blog post we just edited. It will live in `src/pages/blog`. We will now see a new frontmatter field in the markdown with a path to uploaded image. 
+
+#### Step 3 - Reading From CMS Editor:
+Simply put, Netlify CMS doesn't understand GraphQL. Even though the CMS blog preview and our actually site uses the same file `src/templates/blog-post`, they get their data from two different sources. The preview section of the CMS editor uses the content within the editor, for its data. In order to make this happen, we need to register the editor's data with `CMS.registerPreviewTemplate`. It is already done for us in `src/cms/cms.js`. So when the blog post template file calls `<BlogPostTemplate />`, the file replaces the one inside that uses GraphQL for the CMS equivalent. We can tell the CMS editor how to find our new image by updating the component in `src/cms/preview-templates/BlogPostPreview`.
+
+```javascript
+featuredImage={entry.getIn(["data", "featuredImage"])}
+```
+
+
+
+#### Step 4 - Add field types to GraphQL Query
+All for Netlify CMS tasks are done. We are now all set up to figure out how Gatsby will use this new featured image widget. The package `gatsby-image` added a image field type to GraphQL, so we can get optimized images. This was done for us in our `gatsby-node.js` file.
+
+Now it is as simple as one, two, three. We just need to update our GraphQL query to look for the image from our frontmatter field. Add this in `src/templates/blog-post.js` and the data is now available in our component.
+
+```graphql
+featuredImage {
+  childImageSharp {
+    fluid(maxWidth: 630) {
+      ...GatsbyImageSharpFluid_noBase64
+    }
+  }
+}
+```
+
+**That's it!!! We have a image that works both in the CMS editor and on our site. Great Job**
+
+A couple things to note: When querying for this new image, all existing markdown files will also need a `featuredImage` frontmatter field. Good news is we don't have to do Steps 1 and 2 again. We can add a frontmatter field to each markdown file. We can place all our images in `static/img`. When we commit, our images will show in the CMS editor. 

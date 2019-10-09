@@ -109,12 +109,12 @@ const Navbar = class extends React.Component {
           <Link className={stylesheet.item} to="/contact">
             CONTACT
           </Link>
-          <a
+          {/* <a
             className={cx(stylesheet.item, stylesheet.subscribe)}
             href="http://eepurl.com/dF-xnP"
           >
             SUBSCRIBE
-          </a>
+          </a> */}
         </div>
       </nav>
     );
