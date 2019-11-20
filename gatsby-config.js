@@ -48,6 +48,13 @@ module.exports = {
             }
           },
           {
+            resolve: "gatsby-source-filesystem",
+            options: {
+              name: "project",
+              path: `${__dirname}/projects/`
+            }
+          },
+          {
             resolve: "gatsby-remark-relative-images",
             options: {
               name: "uploads"

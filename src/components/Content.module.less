@@ -1,3 +1,4 @@
+@import "../less/global-variables/all.less";
 .copy {
     line-height: 1.8rem;
     font-size: 1.2rem;
@@ -5,7 +6,7 @@
 }
 
 .copy > p:first-child::first-letter {
-    color: #2e307c;
+    color: @purple;
     float: left;
     font-weight: 700;
     font-size: 6rem;
@@ -36,11 +37,11 @@
 
 .anchor {
     text-decoration: none;
-    background-image: linear-gradient(180deg,#a2dadd,#a2dadd);
+    background-image: linear-gradient(180deg,@blue,@blue);
     background-repeat: no-repeat;
     background-position: 8px bottom;
     background-size: 100% 6px;
-    color: #2e307c;
+    color: @purple;
 }
 
 .copy hr {

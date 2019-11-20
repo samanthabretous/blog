@@ -18,12 +18,12 @@ const Navbar = class extends React.Component {
           <Link className={stylesheet.simpleItem} to="/contact">
             CONTACT
           </Link>
-          <a
+          {/* <a
             className={cx(stylesheet.simpleItem, stylesheet.simpleSubscribe)}
             href="http://eepurl.com/dF-xnP"
           >
             SUBSCRIBE
-          </a>
+          </a> */}
         </div>
       </nav>
     );

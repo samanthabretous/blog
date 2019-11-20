@@ -77,14 +77,21 @@ exports.createPages = ({actions, graphql}) => {
 exports.onCreateNode = ({node, actions, getNode}) => {
   const {createNodeField} = actions;
   fmImagesToRelative(node); // convert image paths for gatsby images
-
   if (node.internal.type === `Mdx`) {
     const value = createFilePath({node, getNode});
-    createNodeField({
-      name: `slug`,
-      node,
-      value: `/blog${value}`
-    });
+    if (node.frontmatter.templateKey === "blog-post") {
+      createNodeField({
+        name: `slug`,
+        node,
+        value: `/blog${value}`
+      });
+    } else {
+      createNodeField({
+        name: `slug`,
+        node,
+        value: `/project${value}`
+      });
+    }
     createNodeField({
       name: `readingTime`,
       node,

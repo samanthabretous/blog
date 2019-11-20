@@ -6,10 +6,10 @@ import Home from "../components/Home";
 
 const IndexPage = () => {
   useEffect(() => {
-    document.body.style.backgroundColor = "#2e307c";
+    document.body.style.backgroundColor = "#42215E";
     // componentWillUnmount
     return () => {
-      document.body.style.backgroundColor = "#ffffff";
+      document.body.style.backgroundColor = "#FFFFFF";
     };
   }, []);
   return (

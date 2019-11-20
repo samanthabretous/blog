@@ -91,7 +91,7 @@ const Navbar = class extends React.Component {
               transition: `height 500ms ease`
             }}
           >
-            <Logo color="#2e307c" width={logoWidth} />
+            <Logo color="#42215E" width={logoWidth} />
           </Link>
           <Link
             to="/"
