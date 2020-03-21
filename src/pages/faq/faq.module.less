@@ -52,8 +52,6 @@
     }
 
     .root {
-        max-width: @content-width;
-        width: 90%;
         @media screen and (max-width: @tablet) {
             margin: 0 auto;
         }
@@ -75,6 +73,8 @@
         display: flex;
         flex-direction: row;
         margin-bottom: 96px;
+        max-width: @content-width;
+        width: 90%;
         @media screen and (max-width: @tablet) {
             flex-direction: column;
         }
@@ -109,6 +109,9 @@
                 align-items: center;
                 .question{
                     color: #000;
+                    @media screen and (max-width: @tablet) {
+                        width: 80%;
+                    }
                 }
                 
 

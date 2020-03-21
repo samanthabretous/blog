@@ -21,52 +21,50 @@ const QuestionSection = ({sectionName, sectionQuestions}) => {
     }
   };
   return (
-    <div className={stylesheet.root}>
-      <article className={stylesheet.section}>
-        <h3 className={stylesheet.sectionName}>{sectionName}</h3>
-        <div className={stylesheet.sectionQuestions}>
-          <div className={stylesheet.expand}>
-            <button
+    <article className={stylesheet.section}>
+      <h3 className={stylesheet.sectionName}>{sectionName}</h3>
+      <div className={stylesheet.sectionQuestions}>
+        <div className={stylesheet.expand}>
+          <button
+            onClick={() => {
+              // add all indexes to openAnswer
+              return setOpenedAnswers(
+                Array.from(Array(sectionQuestions.length).keys())
+              );
+            }}
+          >
+            {openedAnswers.length !== sectionQuestions.length
+              ? "Expand all"
+              : "Collapse all"}
+          </button>
+        </div>
+        {sectionQuestions.map((question, index) => (
+          <div className={stylesheet.container} key={question.question}>
+            <div
+              className={stylesheet.questionContainer}
               onClick={() => {
-                // add all indexes to openAnswer
-                return setOpenedAnswers(
-                  Array.from(Array(sectionQuestions.length).keys())
-                );
+                toggleOpen(index);
               }}
             >
-              {openedAnswers.length !== sectionQuestions.length
-                ? "Expand all"
-                : "Collapse all"}
-            </button>
-          </div>
-          {sectionQuestions.map((question, index) => (
-            <div className={stylesheet.container} key={question.question}>
-              <div
-                className={stylesheet.questionContainer}
-                onClick={() => {
-                  toggleOpen(index);
-                }}
-              >
-                <p className={stylesheet.question}>{question.question}</p>
-                <PlusIcon
-                  color="#3EBDB4"
-                  className={cx(stylesheet.icon, {
-                    [stylesheet.iconExpanded]: openedAnswers.includes(index)
-                  })}
-                />
-              </div>
-              <div
-                className={cx(stylesheet.answer, {
-                  [stylesheet.expanded]: openedAnswers.includes(index)
+              <p className={stylesheet.question}>{question.question}</p>
+              <PlusIcon
+                color="#3EBDB4"
+                className={cx(stylesheet.icon, {
+                  [stylesheet.iconExpanded]: openedAnswers.includes(index)
                 })}
-              >
-                {question.answer}
-              </div>
+              />
             </div>
-          ))}
-        </div>
-      </article>
-    </div>
+            <div
+              className={cx(stylesheet.answer, {
+                [stylesheet.expanded]: openedAnswers.includes(index)
+              })}
+            >
+              {question.answer}
+            </div>
+          </div>
+        ))}
+      </div>
+    </article>
   );
 };
 
