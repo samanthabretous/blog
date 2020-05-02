@@ -7,6 +7,11 @@ body {
 
 html {
     font-family: @font-family--base;
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
 }
 
 h1 {
@@ -38,7 +43,7 @@ h5 {
 
 p {
     font-weight: 300;
-    font-size: 1.2rem;
+    font-size: @font-size--p;
     font-family: @font-family--base;
 }
 

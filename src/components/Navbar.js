@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "gatsby";
 import stylesheet from "./Navbar.module.less";
-import Logo from "./Logo";
+import {Logo} from "../icons";
 import cx from "classnames";
 
 const Navbar = class extends React.Component {

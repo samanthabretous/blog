@@ -1,7 +1,7 @@
 import React from "react";
 import Layout from "../components/Layout";
 import {Link} from "gatsby";
-import Logo from "../components/Logo";
+import {Logo} from "../icons";
 import NavbarSimple from "../components/NavbarSimple";
 
 import stylesheet from "./404.module.less";

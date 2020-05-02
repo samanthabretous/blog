@@ -1,5 +1,7 @@
 var proxy = require("http-proxy-middleware");
-
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`
+});
 module.exports = {
   siteMetadata: {
     title: "Samantha Bretous | UX Engineer",
@@ -9,6 +11,12 @@ module.exports = {
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-less",
     "gatsby-plugin-twitter",
+    {
+      resolve: "gatsby-plugin-mailchimp",
+      options: {
+        endpoint: process.env.MAILCHIMP_FORM_TOKEN
+      }
+    },
     {
       // keep as first gatsby-source-filesystem plugin for gatsby image support
       resolve: "gatsby-source-filesystem",

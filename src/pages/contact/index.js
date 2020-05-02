@@ -2,7 +2,7 @@ import React from "react";
 
 import {Link} from "gatsby";
 import Layout from "../../components/Layout";
-import Logo from "../../components/Logo";
+import {Logo} from "../../icons";
 import PreviewCompatibleImage from "../../components/PreviewCompatibleImage";
 import stylesheet from "./index.module.less";
 import Linkedin from "../../icons/Linkedin";
