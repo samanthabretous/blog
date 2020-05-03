@@ -1,0 +1,298 @@
+@import "../../less/global-variables/all.less";
+
+.root {
+  overflow-x: hidden;
+  padding: 0;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: @yellow;
+  // scroll-snap-type: y mandatory;
+  // overflow-y: scroll;
+
+  a {
+    text-decoration: none;
+    color: @black;
+
+    &:visited {
+      color: @black;
+    }
+  }
+}
+
+.view {
+  // scroll-snap-align: center;
+  // scroll-snap-destination: 50% 50%;
+}
+
+.view1 {
+  height: 100vh;
+  width: 100%;
+  background-color: @green;
+  background-image: url(/img/welcome-assets/yellow-blob.svg);
+  background-size: 225%;
+  @media screen and (max-width: @phone) {
+    background-size: 675%;
+  }
+}
+
+.view2 {
+  width: 100%;
+  height: 100vh;
+  background-color: @yellow;
+}
+.view3 {
+  width: 100%;
+  height: 100vh;
+  background-color: @yellow;
+}
+
+.inner {
+  // box-sizing: border-box;
+  max-width: 475px;
+  margin: 0 auto;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+}
+.intro {
+  height: 80%;
+  width: 100%;
+  .stroke1 {
+    width: 120%;
+    position: absolute;
+    bottom: 27%;
+    left: 31%;
+    @media screen and (max-width: @phone) {
+      left: 26%;
+    }
+    @media screen and (max-height: 740px) {
+      width: 100%;
+    }
+  }
+  .stroke2 {
+    width: 120%;
+    position: absolute;
+    bottom: 27%;
+    left: 31%;
+    @media screen and (max-width: @phone) {
+      left: 26%;
+    }
+    @media screen and (max-height: 740px) {
+      width: 100%;
+    }
+  }
+
+  .image {
+    width: 120%;
+    position: absolute;
+    bottom: 28%;
+    left: 31%;
+    @media screen and (max-width: @phone) {
+      left: 28%;
+    }
+    @media screen and (max-height: 740px) {
+      width: 100%;
+    }
+  }
+
+  .tagline {
+    z-index: 1;
+    position: absolute;
+    bottom: 28%;
+    width: 100%;
+    @media screen and (max-width: @phone) {
+      bottom: 28.5%;
+    }
+
+    .taglineH1 {
+      margin: 0;
+      margin-top: 3%;
+      font-size: 4.6rem;
+      @media screen and (max-width: @phone) {
+        font-size: 3.7rem;
+        margin-top: 1.5%;
+      }
+    }
+  }
+}
+.ctaContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 20%;
+  width: 100%;
+  .youTubeButton {
+    display: flex;
+    flex-direction: row;
+    background-color: @black;
+    border-radius: 30px;
+    padding: 1.5%;
+    width: 100%;
+    justify-content: center;
+    @media screen and (max-width: @phone) {
+      border-radius: 20px;
+    }
+
+    p {
+      color: @white;
+      font-weight: 700;
+      font-size: @font-size--h2;
+      margin: 0;
+      margin-left: 3%;
+      @media screen and (max-width: @phone) {
+        font-size: 2.3rem;
+      }
+    }
+  }
+  .arrow {
+    width: 25px;
+    margin-bottom: 25px;
+    svg {
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+.top {
+  position: relative;
+  width: 100%;
+  height: 45%;
+  border-left: 30px solid transparent;
+  .connect {
+    display: block;
+    transform: rotate(270deg);
+    transform-origin: bottom right;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin: 0;
+    color: @gray;
+    /* Abs positioning makes it not take up vert space */
+    position: absolute;
+    top: -18%;
+    left: -109%;
+  }
+  .topRight {
+    display: flex;
+    flex-direction: column;
+    margin-left: 24px;
+    height: 100%;
+    .newsletterContainer {
+      border-bottom: 1px solid @black;
+      height: 25%;
+      padding: 0 0 4% 0;
+
+      .newsletter {
+        height: 100%;
+        width: 100%;
+        background-color: @pink;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: @yellow;
+        font-weight: 400;
+        text-align: center;
+      }
+    }
+    .speakingContainer {
+      border-bottom: 1px solid @black;
+      height: 50%;
+      display: flex;
+      align-items: center;
+      .speaking {
+        color: @purple;
+        font-size: @font-size--h3;
+        text-shadow: 5px 3px @blue;
+        text-align: right;
+        font-weight: 700;
+        margin: 0;
+      }
+    }
+    .contact {
+      display: flex;
+      flex-direction: row;
+      border-bottom: 1px solid @black;
+      height: 25%;
+      .emailContainer {
+        width: 70%;
+        border-right: 1px solid @black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .email {
+          font-size: @font-size--h3;
+          font-weight: 600;
+          color: @pink;
+          margin: 0;
+        }
+      }
+      .twitterContainer {
+        width: 30%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+}
+
+.middle {
+  height: 15%;
+}
+
+.bottomContainer {
+  height: 30%;
+  display: flex;
+  flex-direction: row;
+  .imageContainer {
+    width: 40%;
+    height: 100%;
+    background-image: url(/img/welcome-assets/second-image.png);
+    background-size: 125%;
+  }
+  .bottom {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 60%;
+    margin-left: 24px;
+    justify-content: space-between;
+    .latestBlog {
+      border-top: 1px solid @black;
+    }
+    .linkContainer {
+      border-bottom: 1px solid @black;
+      display: flex;
+      align-items: center;
+      padding: 12px 0;
+      a {
+        font-size: @font-size--h4;
+        font-weight: 500;
+        line-height: @font-size--h4;
+        // @media screen and (max-height: @phone) {
+        //   font-size: 2.3rem;
+        // }
+      }
+    }
+  }
+}
+
+.about {
+  text-align: center;
+  h2 {
+    font-size: @font-size--h4;
+    font-weight: 500;
+    margin-bottom: 0;
+  }
+  p {
+    line-height: @font-size--h2;
+    margin-bottom: 20%;
+  }
+}

@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import cx from "classnames";
 
 import Layout from "../../components/Layout";
@@ -8,11 +8,10 @@ import PlusIcon from "../../icons/Plus";
 import stylesheet from "./faq.module.less";
 import questions from "./questions";
 
-const QuestionSection = ({sectionName, sectionQuestions}) => {
+const QuestionSection = ({ sectionName, sectionQuestions }) => {
   const [openedAnswers, setOpenedAnswers] = useState([]);
-  const toggleOpen = index => {
+  const toggleOpen = (index) => {
     const numberInArray = openedAnswers.indexOf(index);
-    console.log(numberInArray);
     if (numberInArray !== -1) {
       openedAnswers.splice(numberInArray, 1);
       setOpenedAnswers([...openedAnswers]);
@@ -50,13 +49,13 @@ const QuestionSection = ({sectionName, sectionQuestions}) => {
               <PlusIcon
                 color="#3EBDB4"
                 className={cx(stylesheet.icon, {
-                  [stylesheet.iconExpanded]: openedAnswers.includes(index)
+                  [stylesheet.iconExpanded]: openedAnswers.includes(index),
                 })}
               />
             </div>
             <div
               className={cx(stylesheet.answer, {
-                [stylesheet.expanded]: openedAnswers.includes(index)
+                [stylesheet.expanded]: openedAnswers.includes(index),
               })}
             >
               {question.answer}
@@ -81,7 +80,7 @@ const FAQPage = () => {
         </div>
       </div>
       <div className={stylesheet.content}>
-        {Object.keys(questions).map(question => (
+        {Object.keys(questions).map((question) => (
           <QuestionSection
             key={question}
             sectionName={question}

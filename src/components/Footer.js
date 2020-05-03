@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from "gatsby";
+import { Link } from "gatsby";
 import stylesheet from "./Footer.module.less";
 
 const Footer = class extends React.Component {
