@@ -63,12 +63,19 @@
 }
 
 .item {
-  color: @purple;
   text-decoration: none;
   background-image: none;
   margin: 0;
   margin-left: 18px;
   font-size: @font-size--p;
+}
+
+.link {
+  color: @purple;
+  text-decoration: none;
+  &:visited {
+    color: @purple;
+  }
 }
 
 .subscribe {

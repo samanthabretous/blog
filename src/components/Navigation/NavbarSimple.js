@@ -5,7 +5,7 @@ import links from "./links";
 import HamburgerMenu from "./HamburgerMenu";
 
 function NavbarSimple() {
-  if (window.innerWidth < 500) {
+  if (typeof window !== "undefined" && window.innerWidth < 500) {
     return <HamburgerMenu />;
   }
   return (
@@ -17,7 +17,9 @@ function NavbarSimple() {
       <ul className={stylesheet.simpleMenu}>
         {links.map((link) => (
           <li className={stylesheet.simpleItem} key={link.label}>
-            {link.label}
+            <Link to={link.pathname} className={stylesheet.link}>
+              {link.label}
+            </Link>
           </li>
         ))}
       </ul>

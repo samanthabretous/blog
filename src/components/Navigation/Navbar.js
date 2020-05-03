@@ -88,17 +88,21 @@ function Navbar({ showProgressBar }) {
             samanthabretous.com
           </Link>
         </div>
-        {window.innerWidth > 500 && (
+        {typeof window !== "undefined" && window.innerWidth > 500 && (
           <ul className={stylesheet.navbarMenu}>
             {links.map((link) => (
               <li className={stylesheet.item} key={link.label}>
-                {link.label}
+                <Link to={link.pathname} className={stylesheet.link}>
+                  {link.label}
+                </Link>
               </li>
             ))}
           </ul>
         )}
       </nav>
-      {window.innerWidth < 500 && <HamburgerMenu />}
+      {typeof window !== "undefined" && window.innerWidth < 500 && (
+        <HamburgerMenu />
+      )}
     </>
   );
 }

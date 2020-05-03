@@ -22,12 +22,19 @@
 }
 
 .simpleItem {
-  color: @yellow;
   text-decoration: none;
   margin: 0;
   margin-left: 18px;
   background-image: none;
   font-size: @font-size--p;
+}
+
+.link {
+  color: @yellow;
+  text-decoration: none;
+  &:visited {
+    color: @yellow;
+  }
 }
 
 .simpleSubscribe {
