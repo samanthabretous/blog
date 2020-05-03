@@ -3,7 +3,7 @@ import Loadable from "react-loadable";
 
 import Layout from "../../components/Layout";
 import stylesheet from "./index.module.less";
-import Navbar from "../../components/Navbar";
+import Navbar from "../../components/Navigation/Navbar";
 
 const TextAreaContent = Loadable({
   loader: () => import("./Textarea"), // imports the component with the three.js and allows use of it safely

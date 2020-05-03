@@ -1,7 +1,7 @@
 import React from "react";
-import {Link} from "gatsby";
-import {Logo} from "../icons";
-import NavbarSimple from "../components/NavbarSimple";
+import { Link } from "gatsby";
+import { Logo } from "../icons";
+import NavbarSimple from "../components/Navigation/NavbarSimple";
 
 import stylesheet from "./Home.module.less";
 

@@ -1,9 +1,9 @@
 import React from "react";
 
-import {Link} from "gatsby";
+import { Link } from "gatsby";
 import Layout from "../../components/Layout";
 import stylesheet from "./index.module.less";
-import NavbarSimple from "../../components/NavbarSimple";
+import NavbarSimple from "../../components/Navigation/NavbarSimple";
 
 export default class PolicyPage extends React.Component {
   render() {

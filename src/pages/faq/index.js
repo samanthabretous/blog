@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import cx from "classnames";
 
 import Layout from "../../components/Layout";
-import Navbar from "../../components/Navbar";
+import Navbar from "../../components/Navigation/Navbar";
 import Footer from "../../components/Footer";
 import PlusIcon from "../../icons/Plus";
 import stylesheet from "./faq.module.less";

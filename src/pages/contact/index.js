@@ -1,15 +1,15 @@
 import React from "react";
 
-import {Link} from "gatsby";
+import { Link } from "gatsby";
 import Layout from "../../components/Layout";
-import {Logo} from "../../icons";
+import { Logo } from "../../icons";
 import PreviewCompatibleImage from "../../components/PreviewCompatibleImage";
 import stylesheet from "./index.module.less";
 import Linkedin from "../../icons/Linkedin";
 import Github from "../../icons/Github";
 import Twitter from "../../icons/Twitter";
 import contactImage from "../../img/samantha_bretous_2019.jpg";
-import NavbarSimple from "../../components/NavbarSimple";
+import NavbarSimple from "../../components/Navigation/NavbarSimple";
 
 export default class ContactPage extends React.Component {
   render() {
@@ -21,7 +21,7 @@ export default class ContactPage extends React.Component {
             <PreviewCompatibleImage
               imageInfo={{
                 image: contactImage,
-                alt: `contact page image`
+                alt: `contact page image`,
               }}
             />
           </div>
