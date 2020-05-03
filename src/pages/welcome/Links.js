@@ -6,6 +6,7 @@ import cx from "classnames";
 import COLORS from "../../utils/colors";
 
 function Links({ data, setShowModal }) {
+  console.log(setShowModal);
   return (
     <section className={cx(stylesheet.view, stylesheet.view2)}>
       <div className={stylesheet.inner}>
@@ -63,7 +64,7 @@ function Links({ data, setShowModal }) {
   );
 }
 
-export default () => (
+export default ({ setShowModal }) => (
   <StaticQuery
     query={graphql`
       query MostRecentPost {
@@ -88,6 +89,8 @@ export default () => (
         }
       }
     `}
-    render={(data, count) => <Links data={data} count={count} />}
+    render={(data, count) => (
+      <Links data={data} count={count} setShowModal={setShowModal} />
+    )}
   />
 );

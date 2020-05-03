@@ -7,8 +7,9 @@
   width: 100vw;
   height: 100vh;
   background-color: @yellow;
-  // scroll-snap-type: y mandatory;
-  // overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  scroll-snap-points-y: repeat(100vh);
 
   a {
     text-decoration: none;
@@ -21,8 +22,8 @@
 }
 
 .view {
-  // scroll-snap-align: center;
-  // scroll-snap-destination: 50% 50%;
+  scroll-snap-align: center;
+  scroll-snap-destination: 50% 50%;
 }
 
 .view1 {
