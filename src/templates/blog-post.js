@@ -1,12 +1,12 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 // import {kebabCase} from "lodash";
 import Helmet from "react-helmet";
-import {graphql} from "gatsby";
+import { graphql } from "gatsby";
 import PreviewCompatibleImage from "../components/PreviewCompatibleImage";
 import Layout from "../components/Layout";
-import Content, {HTMLContent} from "../components/Content";
-import Navbar from "../components/Navbar";
+import Content, { HTMLContent } from "../components/Content";
+import Navbar from "../components/Navigation/Navbar";
 import Footer from "../components/Footer";
 import stylesheet from "./blog-post.module.less";
 
@@ -19,9 +19,9 @@ export class BlogPostTemplate extends Component {
       title,
       featuredImage,
       readingTime,
-      helmet
+      helmet,
     } = this.props;
-    const PostContent = contentComponent || Content;
+    const PostContent = contentComponent;
     return (
       <section className={stylesheet.section}>
         {helmet || ""}
@@ -30,7 +30,7 @@ export class BlogPostTemplate extends Component {
             <PreviewCompatibleImage
               imageInfo={{
                 image: featuredImage,
-                alt: `featured image thumbnail for post ${title}`
+                alt: `featured image thumbnail for post ${title}`,
               }}
             />
           </div>
@@ -80,11 +80,11 @@ BlogPostTemplate.propTypes = {
   contentComponent: PropTypes.func,
   description: PropTypes.string,
   title: PropTypes.string,
-  helmet: PropTypes.object
+  helmet: PropTypes.object,
 };
 
-const BlogPost = ({data}) => {
-  const {mdx: post} = data;
+const BlogPost = ({ data }) => {
+  const { mdx: post } = data;
   return (
     <Layout>
       <Navbar showProgressBar />
@@ -120,15 +120,15 @@ const BlogPost = ({data}) => {
 
 BlogPost.propTypes = {
   data: PropTypes.shape({
-    mdx: PropTypes.object
-  })
+    mdx: PropTypes.object,
+  }),
 };
 
 export default BlogPost;
 
 export const pageQuery = graphql`
   query BlogPostByID($id: String!) {
-    mdx(id: {eq: $id}) {
+    mdx(id: { eq: $id }) {
       id
       body
       fields {

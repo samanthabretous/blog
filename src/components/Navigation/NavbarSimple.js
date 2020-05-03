@@ -14,9 +14,9 @@ function NavbarSimple() {
       role="navigation"
       aria-label="main-navigation"
     >
-      <ul className={stylesheet.navbarMenu}>
+      <ul className={stylesheet.simpleMenu}>
         {links.map((link) => (
-          <li className={stylesheet.item} key={link.label}>
+          <li className={stylesheet.simpleItem} key={link.label}>
             {link.label}
           </li>
         ))}

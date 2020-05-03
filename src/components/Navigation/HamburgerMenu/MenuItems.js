@@ -32,12 +32,13 @@ const variants = {
 
 export default function MenuItems() {
   return (
-    <motion.ul variants={ulVariants}>
+    <motion.ul className={stylesheet.ul} variants={ulVariants}>
       {links.map((link) => (
         <motion.li
           variants={variants}
           whileTap={{ scale: 0.95 }}
           key={link.label}
+          className={stylesheet.li}
         >
           <Link to={link.pathname} className={stylesheet.link}>
             {link.label}

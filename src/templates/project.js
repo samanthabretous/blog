@@ -1,12 +1,12 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 // import {kebabCase} from "lodash";
 import Helmet from "react-helmet";
-import {graphql} from "gatsby";
+import { graphql } from "gatsby";
 import PreviewCompatibleImage from "../components/PreviewCompatibleImage";
 import Layout from "../components/Layout";
-import Content, {HTMLContent} from "../components/Content";
-import Navbar from "../components/Navbar";
+import Content, { HTMLContent } from "../components/Content";
+import Navbar from "../components/Navigation/Navbar";
 import Footer from "../components/Footer";
 import stylesheet from "./blog-post.module.less";
 
@@ -17,7 +17,7 @@ export class ProjectTemplate extends Component {
       contentComponent,
       title,
       featuredImage,
-      helmet
+      helmet,
     } = this.props;
     const PostContent = contentComponent || Content;
     return (
@@ -28,7 +28,7 @@ export class ProjectTemplate extends Component {
             <PreviewCompatibleImage
               imageInfo={{
                 image: featuredImage,
-                alt: `featured image thumbnail for post ${title}`
+                alt: `featured image thumbnail for post ${title}`,
               }}
             />
           </div>
@@ -79,11 +79,11 @@ ProjectTemplate.propTypes = {
   contentComponent: PropTypes.func,
   description: PropTypes.string,
   title: PropTypes.string,
-  helmet: PropTypes.object
+  helmet: PropTypes.object,
 };
 
-const Project = ({data}) => {
-  const {mdx: post} = data;
+const Project = ({ data }) => {
+  const { mdx: post } = data;
   return (
     <Layout>
       <Navbar showProgressBar />
@@ -119,15 +119,15 @@ const Project = ({data}) => {
 
 Project.propTypes = {
   data: PropTypes.shape({
-    mdx: PropTypes.object
-  })
+    mdx: PropTypes.object,
+  }),
 };
 
 export default Project;
 
 export const pageQuery = graphql`
   query ProjectPostByID($id: String!) {
-    mdx(id: {eq: $id}) {
+    mdx(id: { eq: $id }) {
       id
       body
       fields {
