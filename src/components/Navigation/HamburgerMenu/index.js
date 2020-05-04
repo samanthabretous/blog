@@ -37,6 +37,7 @@ function HamburgerMenu() {
       animate={isOpen ? "open" : "closed"}
       custom={height}
       ref={containerRef}
+      className={stylesheet.hamburgerMenu}
     >
       <motion.div className={stylesheet.background} variants={sidebar} />
       <MenuItems />

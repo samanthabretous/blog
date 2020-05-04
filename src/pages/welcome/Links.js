@@ -6,7 +6,6 @@ import cx from "classnames";
 import COLORS from "../../utils/colors";
 
 function Links({ data, setShowModal }) {
-  console.log(setShowModal);
   return (
     <section className={cx(stylesheet.view, stylesheet.view2)}>
       <div className={stylesheet.inner}>
@@ -28,7 +27,11 @@ function Links({ data, setShowModal }) {
               <a href="/" className={stylesheet.emailContainer}>
                 <p className={stylesheet.email}>EMAIL</p>
               </a>
-              <a href="/" className={stylesheet.twitterContainer}>
+              <a
+                href="https://www.twitter.com/samanthabretous"
+                target="_blank"
+                className={stylesheet.twitterContainer}
+              >
                 <Twitter color={COLORS.BLACK} />
               </a>
             </div>
@@ -55,7 +58,7 @@ function Links({ data, setShowModal }) {
               <Link to="/faq">FAQ</Link>
             </div>
             <div className={stylesheet.linkContainer}>
-              <Link to="/faq">Available for speaking</Link>
+              <Link to="/contact">Available for speaking</Link>
             </div>
           </div>
         </div>

@@ -55,7 +55,7 @@ function Navbar({ showProgressBar }) {
 
   return (
     <>
-      <nav
+      <div
         className={stylesheet.navbar}
         role="navigation"
         aria-label="main-navigation"
@@ -89,17 +89,19 @@ function Navbar({ showProgressBar }) {
           </Link>
         </div>
         {typeof window !== "undefined" && window.innerWidth > 500 && (
-          <ul className={stylesheet.navbarMenu}>
-            {links.map((link) => (
-              <li className={stylesheet.item} key={link.label}>
-                <Link to={link.pathname} className={stylesheet.link}>
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <nav>
+            <ul className={stylesheet.navbarMenu}>
+              {links.map((link) => (
+                <li className={stylesheet.item} key={link.label}>
+                  <Link to={link.pathname} className={stylesheet.link}>
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
         )}
-      </nav>
+      </div>
       {typeof window !== "undefined" && window.innerWidth < 500 && (
         <HamburgerMenu />
       )}

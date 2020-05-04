@@ -2,6 +2,7 @@ import * as React from "react";
 import { motion } from "framer-motion";
 import PropTypes from "prop-types";
 import COLORS from "../../../utils/colors";
+import stylesheet from "./index.module.less";
 
 const Path = (props) => (
   <motion.path
@@ -14,7 +15,7 @@ const Path = (props) => (
 );
 
 export const Hamburger = ({ toggle }) => (
-  <button onClick={toggle}>
+  <button onClick={toggle} className={stylesheet.button}>
     <svg width="23" height="23" viewBox="0 0 23 23">
       <Path
         variants={{
