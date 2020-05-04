@@ -9,7 +9,6 @@
   background-color: @yellow;
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
-  scroll-snap-points-y: repeat(100vh);
 
   a {
     text-decoration: none;
@@ -49,7 +48,6 @@
 }
 
 .inner {
-  // box-sizing: border-box;
   max-width: 475px;
   margin: 0 auto;
   height: 100%;
@@ -59,6 +57,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 24px;
+  padding-bottom: 48px; // this is to handle the bottom nav
 }
 .intro {
   height: 80%;
@@ -126,14 +125,14 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 20%;
+  height: 15%;
   width: 100%;
   .youTubeButton {
     display: flex;
     flex-direction: row;
     background-color: @black;
     border-radius: 30px;
-    padding: 1.5%;
+    padding: 2%;
     width: 100%;
     justify-content: center;
     @media screen and (max-width: @phone) {
@@ -147,7 +146,7 @@
       margin: 0;
       margin-left: 3%;
       @media screen and (max-width: @phone) {
-        font-size: 2.3rem;
+        font-size: 2rem;
       }
     }
   }
