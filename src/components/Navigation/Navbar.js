@@ -4,12 +4,12 @@ import stylesheet from "./Navbar.module.less";
 import { Logo } from "../../icons";
 import links from "./links";
 import HamburgerMenu from "./HamburgerMenu";
-import { useCycle } from "framer-motion";
+import useWindowDimensions from "../../hooks/window-dimensions";
 
 function Navbar({ showProgressBar }) {
   const [logoWidth, setLogoWidth] = useState(150);
   const [navHeight, setNavHeight] = useState("");
-  const [isOpen, toggleOpen] = useCycle(false, true);
+  const { width } = useWindowDimensions();
 
   useEffect(() => {
     const growShrinkLogo = () => {
@@ -51,7 +51,7 @@ function Navbar({ showProgressBar }) {
     } else {
       setNavHeight("60px");
     }
-  }, [showProgressBar, isOpen]);
+  }, [showProgressBar]);
 
   return (
     <>
@@ -88,7 +88,7 @@ function Navbar({ showProgressBar }) {
             samanthabretous.com
           </Link>
         </div>
-        {typeof window !== "undefined" && window.innerWidth > 500 && (
+        {width > 500 && (
           <nav>
             <ul className={stylesheet.navbarMenu}>
               {links.map((link) => (
@@ -102,9 +102,7 @@ function Navbar({ showProgressBar }) {
           </nav>
         )}
       </div>
-      {typeof window !== "undefined" && window.innerWidth < 500 && (
-        <HamburgerMenu />
-      )}
+      {width < 500 && <HamburgerMenu />}
     </>
   );
 }

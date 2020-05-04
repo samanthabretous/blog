@@ -3,9 +3,11 @@ import { Link } from "gatsby";
 import stylesheet from "./NavbarSimple.module.less";
 import links from "./links";
 import HamburgerMenu from "./HamburgerMenu";
+import useWindowDimensions from "../../hooks/window-dimensions";
 
 function NavbarSimple() {
-  if (typeof window !== "undefined" && window.innerWidth < 500) {
+  const { width } = useWindowDimensions();
+  if (width < 500) {
     return <HamburgerMenu />;
   } else {
     return (
