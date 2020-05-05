@@ -11,6 +11,11 @@
   flex-direction: row;
   justify-content: flex-end;
   z-index: 1;
+  width: 100%;
+  padding: 0 48px;
+  @media screen and (max-width: @phone) {
+    background-color: transparent;
+  }
 }
 
 .progressContainer {
@@ -53,7 +58,13 @@
   }
 }
 
-.navbarMenu {
+.navMenu {
+  @media screen and (max-width: @phone) {
+    display: none;
+  }
+}
+
+.navLinks {
   margin-right: 2%;
   padding: 0;
   display: flex;

@@ -3,14 +3,10 @@ import { Link } from "gatsby";
 import stylesheet from "./NavbarSimple.module.less";
 import links from "./links";
 import HamburgerMenu from "./HamburgerMenu";
-import useWindowDimensions from "../../hooks/window-dimensions";
 
 function NavbarSimple() {
-  const { width } = useWindowDimensions();
-  if (width < 500) {
-    return <HamburgerMenu />;
-  } else {
-    return (
+  return (
+    <>
       <nav
         className={stylesheet.simpleMenuContainer}
         role="navigation"
@@ -26,8 +22,9 @@ function NavbarSimple() {
           ))}
         </ul>
       </nav>
-    );
-  }
+      <HamburgerMenu />
+    </>
+  );
 }
 
 export default NavbarSimple;

@@ -4,45 +4,42 @@ import stylesheet from "./Navbar.module.less";
 import { Logo } from "../../icons";
 import links from "./links";
 import HamburgerMenu from "./HamburgerMenu";
-import useWindowDimensions from "../../hooks/window-dimensions";
 
 function Navbar({ showProgressBar }) {
   const [logoWidth, setLogoWidth] = useState(150);
   const [navHeight, setNavHeight] = useState("");
-  const { width } = useWindowDimensions();
+
+  const growShrinkLogo = () => {
+    let width = logoWidth;
+    if (document.body.scrollTop > 5 || document.documentElement.scrollTop > 5) {
+      width = 80;
+    } else {
+      width = 150;
+    }
+    setLogoWidth(width);
+  };
+  useEffect(() => {
+    window.addEventListener("scroll", growShrinkLogo);
+
+    return () => window.removeEventListener("scroll", growShrinkLogo);
+  }, []);
+
+  const runProgressBar = () => {
+    var winScroll =
+      document.body.scrollTop || document.documentElement.scrollTop;
+    var height =
+      document.documentElement.scrollHeight -
+      document.documentElement.clientHeight;
+    var scrolled = (winScroll / height) * 100;
+    document.getElementById("myBar").style.width = scrolled + "%";
+  };
 
   useEffect(() => {
-    const growShrinkLogo = () => {
-      let width = logoWidth;
-      if (
-        document.body.scrollTop > 5 ||
-        document.documentElement.scrollTop > 5
-      ) {
-        width = 80;
-      } else {
-        width = 150;
-      }
-      setLogoWidth(width);
-    };
+    if (showProgressBar) {
+      window.addEventListener("scroll", runProgressBar);
+    }
 
-    window.onscroll = function() {
-      growShrinkLogo();
-    };
-  }, [logoWidth]);
-
-  useEffect(() => {
-    const runProgressBar = () => {
-      var winScroll =
-        document.body.scrollTop || document.documentElement.scrollTop;
-      var height =
-        document.documentElement.scrollHeight -
-        document.documentElement.clientHeight;
-      var scrolled = (winScroll / height) * 100;
-      document.getElementById("myBar").style.width = scrolled + "%";
-    };
-    window.onscroll = function() {
-      showProgressBar && runProgressBar();
-    };
+    return () => window.removeEventListener("scroll", runProgressBar);
   }, [showProgressBar]);
 
   useEffect(() => {
@@ -88,21 +85,19 @@ function Navbar({ showProgressBar }) {
             samanthabretous.com
           </Link>
         </div>
-        {width > 500 && (
-          <nav>
-            <ul className={stylesheet.navbarMenu}>
-              {links.map((link) => (
-                <li className={stylesheet.item} key={link.label}>
-                  <Link to={link.pathname} className={stylesheet.link}>
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        )}
+        <nav className={stylesheet.navMenu}>
+          <ul className={stylesheet.navLinks}>
+            {links.map((link) => (
+              <li className={stylesheet.item} key={link.label}>
+                <Link to={link.pathname} className={stylesheet.link}>
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </div>
-      {width < 500 && <HamburgerMenu />}
+      <HamburgerMenu />
     </>
   );
 }

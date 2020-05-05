@@ -3,6 +3,7 @@ import { Link } from "gatsby";
 import { motion } from "framer-motion";
 import links from "../links";
 import stylesheet from "./index.module.less";
+import { Logo } from "../../../icons";
 
 const ulVariants = {
   open: {
@@ -33,6 +34,19 @@ const variants = {
 export default function MenuItems() {
   return (
     <motion.ul className={stylesheet.ul} variants={ulVariants}>
+      <motion.li
+        variants={variants}
+        whileTap={{ scale: 0.95 }}
+        className={stylesheet.li}
+      >
+        <Link
+          to="/"
+          className={stylesheet.logoWrapper}
+          title="Samantha Bretous Logo"
+        >
+          <Logo color="#42215E" width={150} />
+        </Link>
+      </motion.li>
       {links.map((link) => (
         <motion.li
           variants={variants}
