@@ -8,7 +8,7 @@ import COLORS from "../../utils/colors";
 function Home() {
   return (
     <section className={cx(stylesheet.view, stylesheet.view1)}>
-      <div className={stylesheet.inner}>
+      <div className={cx(stylesheet.inner, stylesheet.homeContent)}>
         <div className={stylesheet.intro}>
           <div className={stylesheet.stroke2}>
             <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
@@ -82,7 +82,7 @@ function Home() {
         </div>
         <div className={stylesheet.ctaContainer}>
           <motion.a
-            href="www.youtube.com"
+            href="https://www.youtube.com/channel/UCBTyDqhBDleV8T4NakT_zXg"
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{
