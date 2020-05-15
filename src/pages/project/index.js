@@ -5,7 +5,7 @@ import Layout from "../../components/Layout";
 import { Logo } from "../../icons";
 import PreviewCompatibleImage from "../../components/PreviewCompatibleImage";
 import stylesheet from "../contact/index.module.less";
-import { LinkedIn, Github, Twitter, YouTube } from "../../icons/LinkedIn";
+import { LinkedIn, Github, Twitter, YouTube } from "../../icons";
 import contactImage from "../../img/samantha_bretous_2019.jpg";
 import NavbarSimple from "../../components/Navigation/NavbarSimple";
 
