@@ -17,8 +17,6 @@ const EmailListForm = ({ pathname }) => {
       process.env.MAILCHIMP_LIST_URL
     )
       .then(({ msg, result }) => {
-        console.log("msg", `${result}: ${msg}`);
-
         if (result !== "success") {
           if (msg.includes("subscribed")) {
             setShowError(

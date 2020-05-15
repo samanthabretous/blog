@@ -15,9 +15,15 @@ function NavbarSimple() {
         <ul className={stylesheet.simpleMenu}>
           {links.map((link) => (
             <li className={stylesheet.simpleItem} key={link.label}>
-              <Link to={link.pathname} className={stylesheet.link}>
-                {link.label}
-              </Link>
+              {link.pathname.startsWith("/") ? (
+                <Link to={link.pathname} className={stylesheet.link}>
+                  {link.label}
+                </Link>
+              ) : (
+                <a href={link.pathname} className={stylesheet.link}>
+                  {link.label}
+                </a>
+              )}
             </li>
           ))}
         </ul>

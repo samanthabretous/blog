@@ -5,9 +5,7 @@ import Layout from "../../components/Layout";
 import { Logo } from "../../icons";
 import PreviewCompatibleImage from "../../components/PreviewCompatibleImage";
 import stylesheet from "./index.module.less";
-import Linkedin from "../../icons/Linkedin";
-import Github from "../../icons/Github";
-import Twitter from "../../icons/Twitter";
+import { Github, LinkedIn, Twitter, YouTube } from "../../icons";
 import contactImage from "../../img/samantha_bretous_2019.jpg";
 import NavbarSimple from "../../components/Navigation/NavbarSimple";
 
@@ -37,6 +35,12 @@ export default class ContactPage extends React.Component {
             </a>
             <div className={stylesheet.contactSocial}>
               <a
+                href="https://www.youtube.com/channel/UCBTyDqhBDleV8T4NakT_zXg"
+                className={stylesheet.contactSocialItem}
+              >
+                <YouTube />
+              </a>
+              <a
                 href="https://twitter.com/samanthabretous"
                 className={stylesheet.contactSocialItem}
               >
@@ -46,7 +50,7 @@ export default class ContactPage extends React.Component {
                 href="https://www.linkedin.com/in/samanthabretous/"
                 className={stylesheet.contactSocialItem}
               >
-                <Linkedin />
+                <LinkedIn />
               </a>
               <a
                 href="https://github.com/samanthabretous"
