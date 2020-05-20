@@ -10,31 +10,28 @@ function Links({ data, setShowModal }) {
     <section className={cx(stylesheet.view, stylesheet.view2)}>
       <div className={stylesheet.inner}>
         <div className={stylesheet.top}>
-          <p className={stylesheet.connect}>LET'S CONNECT</p>
-          <div className={stylesheet.topRight}>
-            <div className={stylesheet.newsletterContainer}>
-              <button
-                className={stylesheet.newsletter}
-                onClick={() => setShowModal(true)}
-              >
-                Subscribe to newsletter
-              </button>
-            </div>
-            <a href="/speak" className={stylesheet.speakingContainer}>
-              <p className={stylesheet.speaking}>Free resources coming soon</p>
+          <div className={stylesheet.newsletterContainer}>
+            <button
+              className={stylesheet.newsletter}
+              onClick={() => setShowModal(true)}
+            >
+              Subscribe to newsletter
+            </button>
+          </div>
+          <a href="/speak" className={stylesheet.speakingContainer}>
+            <p className={stylesheet.speaking}>Free resources coming soon</p>
+          </a>
+          <div className={stylesheet.contact}>
+            <a href="/" className={stylesheet.emailContainer}>
+              <p className={stylesheet.email}>EMAIL</p>
             </a>
-            <div className={stylesheet.contact}>
-              <a href="/" className={stylesheet.emailContainer}>
-                <p className={stylesheet.email}>EMAIL</p>
-              </a>
-              <a
-                href="https://www.twitter.com/samanthabretous"
-                target="_blank"
-                className={stylesheet.twitterContainer}
-              >
-                <Twitter color={COLORS.BLACK} />
-              </a>
-            </div>
+            <a
+              href="https://www.twitter.com/samanthabretous"
+              target="_blank"
+              className={stylesheet.twitterContainer}
+            >
+              <Twitter color={COLORS.BLACK} />
+            </a>
           </div>
         </div>
         <div className={stylesheet.middle}>

@@ -166,91 +166,78 @@
   position: relative;
   width: 100%;
   height: 45%;
-  border-left: 30px solid transparent;
-  .connect {
-    display: block;
-    transform: rotate(270deg);
-    transform-origin: bottom right;
-    font-size: 2.5rem;
-    font-weight: 700;
-    letter-spacing: 3px;
-    margin: 0;
-    color: @gray;
-    /* Abs positioning makes it not take up vert space */
-    position: absolute;
-    top: -18%;
-    left: -109%;
-  }
-  .topRight {
-    display: flex;
-    flex-direction: column;
-    margin-left: 24px;
-    height: 100%;
-    .newsletterContainer {
-      width: 100%;
-      border-bottom: 1px solid @black;
-      height: 25%;
-      display: flex;
-      align-items: flex-start;
+  display: flex;
+  flex-direction: column;
 
-      .newsletter {
-        width: 100%;
-        height: 75%;
-        background-color: @pink;
-        border-radius: 5px;
-        color: @yellow;
-        font-weight: 400;
-        text-align: center;
-      }
+  .newsletterContainer {
+    width: 100%;
+    border-bottom: 1px solid @black;
+    height: 25%;
+    display: flex;
+    align-items: flex-start;
+
+    .newsletter {
+      width: 100%;
+      height: 75%;
+      background-color: @pink;
+      border-radius: 5px;
+      color: @yellow;
+      font-weight: 400;
+      text-align: center;
     }
-    .speakingContainer {
-      border-bottom: 1px solid @black;
-      height: 50%;
+  }
+  .speakingContainer {
+    border-bottom: 1px solid @black;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    .speaking {
+      color: @purple;
+      font-size: @font-size--h3;
+      text-shadow: 5px 3px @blue;
+      text-align: right;
+      font-weight: 700;
+      margin: 0;
+    }
+  }
+  .contact {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid @black;
+    height: 25%;
+    .emailContainer {
+      width: 70%;
+      border-right: 1px solid @black;
       display: flex;
+      justify-content: center;
       align-items: center;
-      .speaking {
-        color: @purple;
+      .email {
         font-size: @font-size--h3;
-        text-shadow: 5px 3px @blue;
-        text-align: right;
-        font-weight: 700;
+        font-weight: 600;
+        color: @pink;
         margin: 0;
       }
     }
-    .contact {
+    .twitterContainer {
+      width: 30%;
       display: flex;
-      flex-direction: row;
-      border-bottom: 1px solid @black;
-      height: 25%;
-      .emailContainer {
-        width: 70%;
-        border-right: 1px solid @black;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        .email {
-          font-size: @font-size--h3;
-          font-weight: 600;
-          color: @pink;
-          margin: 0;
-        }
-      }
-      .twitterContainer {
-        width: 30%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
+      justify-content: center;
+      align-items: center;
     }
   }
 }
 
 .middle {
-  height: 15%;
+  height: 25%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .bottomContainer {
   height: 30%;
+  width: 100%;
   display: flex;
   flex-direction: row;
   .imageContainer {
