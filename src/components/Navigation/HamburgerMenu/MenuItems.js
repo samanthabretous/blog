@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Link } from "gatsby";
 import { motion } from "framer-motion";
-import links from "../links";
+import NavLink, { links } from "../Links";
 import stylesheet from "./index.module.less";
 import { Logo } from "../../../icons";
 
@@ -54,9 +54,7 @@ export default function MenuItems() {
           key={link.label}
           className={stylesheet.li}
         >
-          <Link to={link.pathname} className={stylesheet.link}>
-            {link.label}
-          </Link>
+          <NavLink link={link} className={stylesheet.link} />
         </motion.li>
       ))}
     </motion.ul>

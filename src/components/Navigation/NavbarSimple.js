@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "gatsby";
 import stylesheet from "./NavbarSimple.module.less";
-import links from "./links";
+import NavLink, { links } from "./Links";
 import HamburgerMenu from "./HamburgerMenu";
 
 function NavbarSimple() {
@@ -15,15 +15,7 @@ function NavbarSimple() {
         <ul className={stylesheet.simpleMenu}>
           {links.map((link) => (
             <li className={stylesheet.simpleItem} key={link.label}>
-              {link.pathname.startsWith("/") ? (
-                <Link to={link.pathname} className={stylesheet.link}>
-                  {link.label}
-                </Link>
-              ) : (
-                <a href={link.pathname} className={stylesheet.link}>
-                  {link.label}
-                </a>
-              )}
+              <NavLink link={link} className={stylesheet.link} />
             </li>
           ))}
         </ul>

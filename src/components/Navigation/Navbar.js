@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "gatsby";
 import stylesheet from "./Navbar.module.less";
 import { Logo } from "../../icons";
-import links from "./links";
+import NavLink, { links } from "./Links";
 import HamburgerMenu from "./HamburgerMenu";
 
 function Navbar({ showProgressBar }) {
@@ -89,15 +89,7 @@ function Navbar({ showProgressBar }) {
           <ul className={stylesheet.navLinks}>
             {links.map((link) => (
               <li className={stylesheet.item} key={link.label}>
-                {link.pathname.startsWith("/") ? (
-                  <Link to={link.pathname} className={stylesheet.link}>
-                    {link.label}
-                  </Link>
-                ) : (
-                  <a href={link.pathname} className={stylesheet.link}>
-                    {link.label}
-                  </a>
-                )}
+                <NavLink link={link} className={stylesheet.link} />
               </li>
             ))}
           </ul>
