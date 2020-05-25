@@ -7,6 +7,7 @@ import CodeBlock from "./CodeBlock";
 import CodeBlockInline from "./CodeBlockInline";
 import { MDXProvider } from "@mdx-js/react";
 import stylesheet from "./Content.module.less";
+import YouTube from "./YouTube";
 
 export const HTMLContent = ({ content, className }) => {
   const components = {
@@ -15,6 +16,7 @@ export const HTMLContent = ({ content, className }) => {
     a: (props) => <a {...props} className={stylesheet.anchor} />,
     code: CodeBlock,
     inlineCode: CodeBlockInline,
+    YouTube,
   };
 
   const mdxContent = (
