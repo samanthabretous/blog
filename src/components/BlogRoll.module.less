@@ -1,162 +1,183 @@
 @import "../less/global-variables/all.less";
 
 .cardFeaturedBackground {
-    background: @gray;
-    padding: 90px 30px 30px;
+  background: @gray;
+  padding: 90px 30px 30px;
 }
 
 .cardFeatured {
-    display: flex;
-    flex-direction: row;
-    max-width: 1140px;
-    max-height: 550px;
-    text-decoration: none;
-    background-color: transparent;
-    margin: 0 auto;
-    border: 5px solid @purple;
-    @media screen and (max-width: @tablet) {
-        flex-direction: column;
-        max-height: none;
-    }
+  display: flex;
+  flex-direction: row;
+  max-width: 1140px;
+  max-height: 550px;
+  text-decoration: none;
+  background-color: transparent;
+  margin: 0 auto;
+  border: 5px solid @purple;
+  @media screen and (max-width: @tablet) {
+    flex-direction: column;
+    max-height: none;
+  }
 }
 
 .cardImage {
-    order: 2;
-    width: 60%;
-    @media screen and (max-width: @tablet) {
-        width: 100%;
-        order: 0;
-        height: 54vw;
-    }
+  order: 2;
+  width: 60%;
+  @media screen and (max-width: @tablet) {
+    width: 100%;
+    order: 0;
+    height: 54vw;
+  }
 }
 
 .cardInfo {
-    background: @white;
-    width: 40%;
-    padding: 40px 30px;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    color: @purple;
-    border-right: 5px solid @purple;
-    @media screen and (max-width: @tablet) {
-        border-right: none;
-        width: auto;
-    }
+  background: @white;
+  width: 40%;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  color: @purple;
+  border-right: 5px solid @purple;
+  @media screen and (max-width: @tablet) {
+    border-right: none;
+    width: auto;
+  }
 }
 
 .cardCategory {
-    color: @white;
-    letter-spacing: .08334rem;
-    text-transform: uppercase;
-    font-size: 1rem;
-    @media screen and (max-width: @tablet) {
-        margin-top: 0;
-    }
+  color: @white;
+  letter-spacing: 0.08334rem;
+  text-transform: uppercase;
+  font-size: 1rem;
+  @media screen and (max-width: @tablet) {
+    margin-top: 0;
+  }
 }
 
 .cardTitle {
-    margin: 0;
-    font-size: 2.5rem;
+  margin: 0;
+  font-size: 2.5rem;
 }
 
 .cardExcerpt {
-    display: block;
+  display: block;
 }
 
 .readMore {
-    font-weight: 500;
-    align-self: flex-start;
-    letter-spacing: .08334rem;
-    background-image: linear-gradient(180deg,@blue,@blue);
-    background-repeat: no-repeat;
-    background-position: 8px bottom;
-    background-size: 100% 6px;
-    text-transform: uppercase;
+  font-weight: 500;
+  align-self: flex-start;
+  letter-spacing: 0.08334rem;
+  background-image: linear-gradient(180deg, @blue, @blue);
+  background-repeat: no-repeat;
+  background-position: 8px bottom;
+  background-size: 100% 6px;
+  text-transform: uppercase;
 }
 
 .mustRead {
-    margin-top: 60px;
-    margin-right: auto;
-    margin-left: auto;
-    padding: 0 30px;
-    font-size: 1.75rem;
-    text-align: center;
-    @media screen and (max-width: @tablet) {
-        text-align: left;
-        font-size: 1.5rem;
-    }
+  margin-top: 60px;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 0 30px;
+  font-size: 1.75rem;
+  text-align: center;
+  @media screen and (max-width: @tablet) {
+    text-align: left;
+    font-size: 1.5rem;
+  }
 }
 
 .gridCol3 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  // justify-content: space-between;
+  max-width: 1140px;
+  margin-right: auto;
+  margin-left: auto;
+  @media screen and (max-width: @tablet) {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
-    // justify-content: space-between;
-    max-width: 1140px;
-    margin-right: auto;
-    margin-left: auto;
-    @media screen and (max-width: @tablet) {
-        display: flex;
-        flex-direction: row;
-    }
+  }
 }
 
 .post {
-    margin-top: 30px;
-    display: inline-flex;
-    flex-direction: column;
-    width: calc(33.33% - 20px);
-    background-color: transparent;
-    color: inherit;
-    text-decoration: none;
-    margin-left: 20px;
-    @media screen and (max-width: @tablet) {
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-    }
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: calc(33.33% - 20px);
+  background-color: transparent;
+  color: inherit;
+  text-decoration: none;
+  margin-left: 20px;
+  position: relative;
+  @media screen and (max-width: @tablet) {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 0;
+    margin-bottom: 12px;
+    align-items: flex-start;
+  }
 }
 
 .featuredThumbnail {
-    position: relative;
-    background: @yellow;
-    @media screen and (max-width: @tablet) {
-        flex-shrink: 0;
-        width: 30vw;
-        height: 30vw;
-    }
+  width: 100%;
+  background: @yellow;
+  @media screen and (max-width: @tablet) {
+    flex-shrink: 0;
+    width: 30vw;
+    height: 30vw;
+  }
 }
 
 .postInformation {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding-top: 15px;
+  align-items: flex-start;
+  border: 3px solid @purple;
+  background-color: @white;
+  width: 90%;
+  position: relative;
+  bottom: 30px;
+  padding: 12px;
+  @media screen and (max-width: @tablet) {
+    margin-top: -3px;
+    padding-top: 6px;
+    padding-left: 15px;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    padding-top: 15px;
-    align-items: flex-start;
-    @media screen and (max-width: @tablet){
-        margin-top: -3px;
-        padding-top: 6px;
-        padding-left: 15px;
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
+    border: none;
+    bottom: 0;
+  }
+
+  h4 {
+    margin-bottom: 0;
+    @media screen and (max-width: @tablet) {
+      font-size: 0.75em;
     }
+  }
 }
 
 .postCategory {
-    color: @purple;
-    font-size: .66667rem;
-    letter-spacing: .08334rem;
-    text-transform: uppercase;
+  color: @purple;
+  font-size: 0.66667rem;
+  letter-spacing: 0.08334rem;
+  text-transform: uppercase;
 }
 
 .postTitle {
+  margin-top: 6px;
+  font-size: 18px;
+  text-align: left;
+  line-height: 1.75rem;
+  @media screen and (max-width: @tablet) {
     margin-top: 6px;
-    font-size: 18px;
-    text-align: left;
-    line-height: 1.75rem;
-    @media screen and (max-width: @tablet) {
-        margin-top: 6px;
-    }
+  }
 }
