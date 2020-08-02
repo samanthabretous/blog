@@ -7,6 +7,7 @@ import PreviewCompatibleImage from "../components/PreviewCompatibleImage";
 import Layout from "../components/Layout";
 import Content, { HTMLContent } from "../components/Content";
 import Navbar from "../components/Navigation/Navbar";
+import SEO from "../components/SEO/SEO";
 import Footer from "../components/Footer";
 import stylesheet from "./blog-post.module.less";
 
@@ -24,7 +25,6 @@ export class BlogPostTemplate extends Component {
     const PostContent = contentComponent;
     return (
       <section className={stylesheet.section}>
-        {helmet || ""}
         <div className={stylesheet.articleHero}>
           <div className={stylesheet.heroWrapper}>
             <PreviewCompatibleImage
@@ -87,27 +87,16 @@ const BlogPost = ({ data }) => {
   const { mdx: post } = data;
   return (
     <Layout>
+      <SEO
+        frontmatter={post.frontmatter}
+        postImage={post.frontmatter.featuredImage.childImageSharp.fluid.src}
+        isBlogPost
+      />
       <Navbar showProgressBar />
       <BlogPostTemplate
         content={post.body}
         contentComponent={HTMLContent}
         description={post.frontmatter.description}
-        helmet={
-          <Helmet titleTemplate="%s | Samantha Bretous">
-            <title>{`${post.frontmatter.title}`}</title>
-            <meta
-              name="description"
-              content={`${post.frontmatter.description}`}
-            />
-            <meta property="og:title" content={post.frontmatter.title} />
-            <meta
-              property="og:image"
-              content={
-                post.frontmatter.featuredImage.childImageSharp.fluid.originalImg
-              }
-            />
-          </Helmet>
-        }
         tags={post.frontmatter.tags}
         title={post.frontmatter.title}
         featuredImage={post.frontmatter.featuredImage}
