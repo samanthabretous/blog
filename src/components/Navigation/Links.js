@@ -16,6 +16,10 @@ export const links = [
     pathname: "https://www.youtube.com/channel/UCBTyDqhBDleV8T4NakT_zXg",
   },
   {
+    label: "MENTORSHIP",
+    pathname: "/mentorship",
+  },
+  {
     label: "CONTACT",
     pathname: "/contact",
   },
@@ -29,7 +33,12 @@ function Links({ link, className }) {
           {link.label}
         </Link>
       ) : (
-        <a href={link.pathname} target="_blank" className={className}>
+        <a
+          href={link.pathname}
+          target="_blank"
+          rel="noreferrer"
+          className={className}
+        >
           {link.label}
         </a>
       )}

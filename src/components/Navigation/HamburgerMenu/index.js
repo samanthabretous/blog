@@ -1,5 +1,4 @@
 import React, { useRef } from "react";
-import PropTypes from "prop-types";
 import { motion, useCycle } from "framer-motion";
 import { useDimensions } from "./use-dimensions";
 import Hamburger from "./Hamburger";
