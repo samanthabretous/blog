@@ -22,7 +22,7 @@ const MentorshipPage = () => {
           </h2>
           <a
             className={stylesheet.button}
-            href="https://tidycal.com/w3eylw1/60-minute-meeting"
+            href="https://tidycal.com/samanthabretous/60-minute-meeting"
             target="_blank"
             rel="noreferrer"
           >
